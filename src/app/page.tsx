@@ -47,8 +47,8 @@ function Hero() {
 
       <AnimateIn delay={850} className="text-center relative z-10 mt-8">
         <p className="text-apple-gray text-base md:text-lg font-[family-name:var(--font-body)]">
-          From{" "}
           <span className="text-white font-semibold">R15,000</span>
+          <span className="text-apple-gray-text text-sm ml-2">delivered · customs included</span>
         </p>
       </AnimateIn>
 
@@ -666,7 +666,7 @@ function OrderSection() {
               R15,000
             </div>
             <p className="text-apple-gray text-sm mt-2 font-[family-name:var(--font-body)]">
-              12GB RAM · 256GB Storage
+              12GB RAM · 256GB Storage · Delivered to your door
             </p>
           </div>
         </AnimateIn>
@@ -725,13 +725,13 @@ function OrderSection() {
               <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.747L15.47 4.397A2.25 2.25 0 0 0 13.643 3.5H9.75v10.75h10.5" />
               </svg>
-              Free SA Shipping
+              Free Delivery
             </span>
             <span className="flex items-center gap-2">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
               </svg>
-              Secure Payment
+              Customs Included
             </span>
             <span className="flex items-center gap-2">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
@@ -805,7 +805,7 @@ function Footer() {
             &copy; {new Date().getFullYear()} Device Too Nice. All rights reserved.
           </p>
           <p className="text-apple-gray-text text-xs font-[family-name:var(--font-body)] text-center sm:text-right">
-            Prices in South African Rand. Delivery times may vary.
+            All prices in ZAR. Includes delivery &amp; customs duties. No hidden fees.
             <br className="sm:hidden" /> OnePlus is a registered trademark of
             OnePlus Technology.
           </p>
