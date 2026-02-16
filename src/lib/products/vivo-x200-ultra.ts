@@ -9,7 +9,7 @@ export const vivoX200Ultra: Product = {
   accentHover: "#3350e0",
 
   heroImage:
-    "https://www.giztop.com/media/catalog/product/cache/7273d816367fe28095c8d1187b15b971/v/i/vivo_x200_ultra.png",
+    "https://www.giztop.com/media/catalog/product/cache/7273d816367fe28095c8d1187b15b971/1/0/10010781_1745233795761_750x750.png",
   heroSubtitle: "The Ultimate Camera Phone.",
   startingPrice: 20000,
 
@@ -23,7 +23,7 @@ export const vivoX200Ultra: Product = {
     { value: 4500, separator: ",", suffix: " nits", label: "Peak Brightness" },
   ],
   displayImage:
-    "https://www.giztop.com/media/catalog/product/cache/97cc1143d2e20f2b0c8ea91aaa12053c/v/i/vivo_x200_ultra_black_1.png",
+    "https://www.giztop.com/media/catalog/product/cache/97cc1143d2e20f2b0c8ea91aaa12053c/1/0/10010781_1745233807426_750x750.png",
   displayFootnote: "100% DCI-P3 \u00b7 Dolby Vision \u00b7 HDR10+ \u00b7 2K+ LTPO",
 
   // Performance
@@ -48,7 +48,7 @@ export const vivoX200Ultra: Product = {
     { value: 4, suffix: "K120fps", label: "Video" },
   ],
   cameraImage:
-    "https://www.giztop.com/media/catalog/product/cache/97cc1143d2e20f2b0c8ea91aaa12053c/v/i/vivo_x200_ultra_black_3.png",
+    "https://www.giztop.com/media/catalog/product/cache/97cc1143d2e20f2b0c8ea91aaa12053c/1/0/10010781_1745233824363_750x750.png",
   cameraDetails: [
     { name: "Main Camera", sensor: "Sony LYT-818", detail: "50MP \u00b7 f/1.57 \u00b7 OIS \u00b7 ZEISS T*" },
     { name: "Periscope Telephoto", sensor: "Samsung HP9", detail: "200MP \u00b7 f/2.67 \u00b7 4.3\u00d7 optical \u00b7 OIS" },
@@ -146,9 +146,9 @@ export const vivoX200Ultra: Product = {
   ramOptions: ["16GB"],
   storageOptions: ["256GB", "512GB", "1TB"],
   variants: [
-    { ram: "16GB", storage: "256GB", price: 20000, colors: ["black", "titanium"] },
-    { ram: "16GB", storage: "512GB", price: 22000, colors: ["black", "titanium", "white"] },
-    { ram: "16GB", storage: "1TB", price: 24500, colors: ["black", "titanium", "white"] },
+    { ram: "16GB", storage: "256GB", price: 20000, colors: ["black", "silver"] },
+    { ram: "16GB", storage: "512GB", price: 22000, colors: ["black", "silver", "red"] },
+    { ram: "16GB", storage: "1TB", price: 24500, colors: ["black", "silver", "red"] },
   ],
   colors: [
     {
@@ -156,21 +156,21 @@ export const vivoX200Ultra: Product = {
       name: "Eclipse Black",
       hex: "#1a1a1a",
       image:
-        "https://www.giztop.com/media/catalog/product/cache/97cc1143d2e20f2b0c8ea91aaa12053c/v/i/vivo_x200_ultra_black_2.png",
+        "https://www.giztop.com/media/catalog/product/cache/97cc1143d2e20f2b0c8ea91aaa12053c/x/2/x200u-black.jpg",
     },
     {
-      key: "titanium",
-      name: "Titanium Grey",
-      hex: "#8A8A8A",
+      key: "silver",
+      name: "Titanium Silver",
+      hex: "#B0B0B0",
       image:
-        "https://www.giztop.com/media/catalog/product/cache/97cc1143d2e20f2b0c8ea91aaa12053c/v/i/vivo_x200_ultra_grey_2.png",
+        "https://www.giztop.com/media/catalog/product/cache/97cc1143d2e20f2b0c8ea91aaa12053c/x/2/x200u-silver.jpg",
     },
     {
-      key: "white",
-      name: "Marble White",
-      hex: "#E8E4DF",
+      key: "red",
+      name: "ZEISS Red",
+      hex: "#8B2020",
       image:
-        "https://www.giztop.com/media/catalog/product/cache/97cc1143d2e20f2b0c8ea91aaa12053c/v/i/vivo_x200_ultra_white_2.png",
+        "https://www.giztop.com/media/catalog/product/cache/97cc1143d2e20f2b0c8ea91aaa12053c/x/2/x200u-red.jpg",
     },
   ],
 };

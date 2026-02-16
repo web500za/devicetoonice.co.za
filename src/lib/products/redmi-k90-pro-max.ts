@@ -158,21 +158,21 @@ export const redmiK90ProMax: Product = {
       name: "Midnight Black",
       hex: "#1a1a1a",
       image:
-        "https://www.giztop.com/media/catalog/product/cache/97cc1143d2e20f2b0c8ea91aaa12053c/r/e/redmi_k90_pro_max_black_2.png",
+        "https://www.giztop.com/media/catalog/product/cache/97cc1143d2e20f2b0c8ea91aaa12053c/r/e/redmi_k90_pro_max_2.jpg",
     },
     {
       key: "blue",
       name: "Frost Blue",
       hex: "#5B8FB9",
       image:
-        "https://www.giztop.com/media/catalog/product/cache/97cc1143d2e20f2b0c8ea91aaa12053c/r/e/redmi_k90_pro_max_blue_2.png",
+        "https://www.giztop.com/media/catalog/product/cache/97cc1143d2e20f2b0c8ea91aaa12053c/r/e/redmi_k90_pro_max-2_2.jpg",
     },
     {
       key: "white",
       name: "Glacier White",
       hex: "#E8E4DF",
       image:
-        "https://www.giztop.com/media/catalog/product/cache/97cc1143d2e20f2b0c8ea91aaa12053c/r/e/redmi_k90_pro_max_white_2.png",
+        "https://www.giztop.com/media/catalog/product/cache/97cc1143d2e20f2b0c8ea91aaa12053c/r/e/redmi_k90_pro_max-1_2.jpg",
     },
   ],
 };
