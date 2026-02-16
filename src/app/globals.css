@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+@theme {
+  --color-op-red: #e31937;
+  --color-op-red-hover: #c41430;
+  --color-op-black: #0a0a0a;
+  --color-apple-gray: #86868b;
+  --color-apple-light: #f5f5f7;
+  --color-apple-dark: #1d1d1f;
+  --color-apple-gray-text: #6e6e73;
+
+  --font-display: "Syne", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-slow: pulse-slow 3s ease-in-out infinite;
+  --animate-scroll-hint: scroll-hint 2s ease-in-out infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-16px); }
+  }
+
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.8; }
+  }
+
+  @keyframes scroll-hint {
+    0%, 100% { transform: translateY(0); opacity: 0.6; }
+    50% { transform: translateY(8px); opacity: 1; }
+  }
+}
+
+/* ---- Base ---- */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: #000;
+  color: #fff;
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+/* ---- Selection ---- */
+::selection {
+  background: rgba(227, 25, 55, 0.35);
+  color: #fff;
+}
+
+/* ---- Radial glow utility ---- */
+.glow-red {
+  background: radial-gradient(ellipse 600px 400px at 50% 60%, rgba(227, 25, 55, 0.08) 0%, transparent 70%);
+}
+
+.glow-red-strong {
+  background: radial-gradient(ellipse 500px 350px at 50% 50%, rgba(227, 25, 55, 0.15) 0%, transparent 70%);
+}
+
+/* ---- Stat number styling ---- */
+.stat-number {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+/* ---- Section spacing ---- */
+.section-padding {
+  padding-top: clamp(100px, 15vh, 200px);
+  padding-bottom: clamp(100px, 15vh, 200px);
+}
+
+/* ---- Sticky nav backdrop ---- */
+.nav-blur {
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+}
+
+/* ---- Color swatch ring ---- */
+.swatch-ring {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.15);
+}
+
+.swatch-ring-active {
+  box-shadow: 0 0 0 2px #e31937;
+}
+
+/* ---- Smooth image rendering ---- */
+img {
+  image-rendering: -webkit-optimize-contrast;
+}
+
+/* ---- Custom scrollbar ---- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
