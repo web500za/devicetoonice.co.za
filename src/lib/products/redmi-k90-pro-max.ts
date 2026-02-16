@@ -23,7 +23,7 @@ export const redmiK90ProMax: Product = {
     { value: 3200, separator: ",", suffix: " nits", label: "Peak Brightness" },
   ],
   displayImage:
-    "https://www.giztop.com/media/catalog/product/cache/97cc1143d2e20f2b0c8ea91aaa12053c/r/e/redmi_k90_pro_max_black_1.png",
+    "https://www.giztop.com/media/catalog/product/cache/97cc1143d2e20f2b0c8ea91aaa12053c/r/e/redmi_k90_pro_max_1.jpg",
   displayFootnote: "100% DCI-P3 \u00b7 Dolby Vision \u00b7 HDR10+ \u00b7 2K+ LTPO",
 
   // Performance
@@ -48,7 +48,7 @@ export const redmiK90ProMax: Product = {
     { value: 8, suffix: "K", label: "Video" },
   ],
   cameraImage:
-    "https://www.giztop.com/media/catalog/product/cache/97cc1143d2e20f2b0c8ea91aaa12053c/r/e/redmi_k90_pro_max_black_3.png",
+    "https://www.giztop.com/media/catalog/product/cache/97cc1143d2e20f2b0c8ea91aaa12053c/r/e/redmi_k90_pro_max_3.jpg",
   cameraDetails: [
     { name: "Main Camera", sensor: "Sony IMX906", detail: "50MP \u00b7 f/1.6 \u00b7 OIS \u00b7 24mm" },
     { name: "Telephoto", sensor: "3\u00d7 Periscope", detail: "50MP \u00b7 f/2.5 \u00b7 OIS \u00b7 75mm" },
