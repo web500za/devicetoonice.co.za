@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import type { Product } from "@/lib/types";
 
-export default function StickyNav() {
+export default function StickyNav({ product }: { product: Product }) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -25,7 +26,7 @@ export default function StickyNav() {
       <div className="nav-blur bg-black/80 border-b border-white/[0.06]">
         <div className="max-w-6xl mx-auto px-5 h-12 flex items-center justify-between">
           <a
-            href="#hero"
+            href="/"
             className="font-[family-name:var(--font-display)] font-bold text-white text-[15px] tracking-tight hover:opacity-80 transition-opacity"
           >
             Device Too Nice
@@ -33,11 +34,14 @@ export default function StickyNav() {
 
           <div className="flex items-center gap-5">
             <span className="text-[13px] text-apple-gray hidden sm:block tracking-wide">
-              OnePlus 15
+              {product.name}
             </span>
             <a
               href="#order"
-              className="bg-op-red text-white text-[13px] font-semibold px-4 py-1.5 rounded-full hover:bg-op-red-hover transition-colors"
+              className="text-white text-[13px] font-semibold px-4 py-1.5 rounded-full transition-colors"
+              style={{ backgroundColor: product.accentColor }}
+              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = product.accentHover)}
+              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = product.accentColor)}
             >
               Order Now
             </a>

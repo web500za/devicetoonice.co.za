@@ -17,20 +17,23 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "OnePlus 15 — Device Too Nice | South Africa",
+  title: "Device Too Nice — Premium Smartphones | South Africa",
   description:
-    "Experience the OnePlus 15. Snapdragon 8 Elite, 7300mAh battery, triple 50MP cameras, 165Hz display. From R15,000. Free shipping across South Africa.",
+    "Premium smartphones delivered to your door. OnePlus, Xiaomi, OPPO, Redmi, Vivo. No customs fees. Free delivery across South Africa.",
   keywords: [
+    "buy smartphones South Africa",
     "OnePlus 15",
-    "buy OnePlus 15 South Africa",
-    "OnePlus 15 price ZAR",
+    "Xiaomi 17 Pro",
+    "OPPO Find X9 Pro",
+    "Redmi K90 Pro Max",
+    "Vivo X200 Ultra",
     "Device Too Nice",
     "flagship phone South Africa",
   ],
   openGraph: {
-    title: "OnePlus 15 — Power On. Limits Off.",
+    title: "Device Too Nice — Premium Smartphones Delivered",
     description:
-      "The ultimate flagship smartphone. Now available in South Africa from R15,000.",
+      "Premium smartphones imported directly. No customs. Free delivery across South Africa.",
     siteName: "Device Too Nice",
     type: "website",
     locale: "en_ZA",
