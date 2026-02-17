@@ -32,7 +32,7 @@ export default function BatterySection({ product }: { product: Product }) {
 
         <AnimateIn delay={200}>
           <div className="mt-12 md:mt-16">
-            <div className="stat-number text-[clamp(3.5rem,10vw,7rem)] text-white">
+            <div className="stat-number text-[clamp(2.5rem,10vw,7rem)] text-white">
               <CountUp end={product.batteryCapacity} separator="," />
               <span className="text-[0.4em] text-apple-gray ml-2 font-[family-name:var(--font-body)] tracking-normal">
                 mAh

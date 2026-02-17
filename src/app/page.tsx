@@ -15,7 +15,7 @@ export default function Home() {
           <p className="text-apple-gray text-xs md:text-sm uppercase tracking-[0.35em] mb-5 font-[family-name:var(--font-body)]">
             Device Too Nice
           </p>
-          <h1 className="font-[family-name:var(--font-display)] font-extrabold text-[clamp(2.5rem,7vw,5rem)] text-white tracking-[-0.04em] leading-[0.95]">
+          <h1 className="font-[family-name:var(--font-display)] font-extrabold text-[clamp(1.85rem,7vw,5rem)] text-white tracking-[-0.04em] leading-[0.95]">
             Premium Smartphones.
             <br />
             <span className="text-apple-gray">Delivered to Your Door.</span>

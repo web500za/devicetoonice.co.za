@@ -31,7 +31,7 @@ export default function Hero({ product }: { product: Product }) {
       </AnimateIn>
 
       <AnimateIn delay={250} className="text-center relative z-10">
-        <h1 className="font-[family-name:var(--font-display)] font-extrabold text-[clamp(3.5rem,10vw,7.5rem)] text-white tracking-[-0.04em] leading-[0.9]">
+        <h1 className="font-[family-name:var(--font-display)] font-extrabold text-[clamp(2.25rem,10vw,7.5rem)] text-white tracking-[-0.04em] leading-[0.9]">
           {product.name}
         </h1>
       </AnimateIn>
