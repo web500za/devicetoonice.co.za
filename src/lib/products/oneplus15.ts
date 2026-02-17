@@ -158,6 +158,13 @@ export const oneplus15: Product = {
   ],
   colors: [
     {
+      key: "sandstorm",
+      name: "Sand Storm",
+      hex: "#C8B89A",
+      image:
+        "https://www.giztop.com/media/catalog/product/cache/97cc1143d2e20f2b0c8ea91aaa12053c/o/n/oneplus_15_2.png",
+    },
+    {
       key: "black",
       name: "Infinite Black",
       hex: "#1a1a1a",
@@ -170,13 +177,6 @@ export const oneplus15: Product = {
       hex: "#7B4EAB",
       image:
         "https://www.giztop.com/media/catalog/product/cache/97cc1143d2e20f2b0c8ea91aaa12053c/o/n/oneplus_15_purple_2.png",
-    },
-    {
-      key: "sandstorm",
-      name: "Sand Storm",
-      hex: "#C8B89A",
-      image:
-        "https://www.giztop.com/media/catalog/product/cache/97cc1143d2e20f2b0c8ea91aaa12053c/o/n/oneplus_15_2.png",
     },
   ],
 };
