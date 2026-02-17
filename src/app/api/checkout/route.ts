@@ -51,7 +51,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+    const baseUrl = (process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000").trim();
 
     // Create Yoco checkout session
     const yocoResponse = await fetch("https://payments.yoco.com/api/checkouts", {
@@ -95,16 +95,7 @@ export async function POST(request: Request) {
         secretKeyPrefix: process.env.YOCO_SECRET_KEY?.slice(0, 8),
       });
       return NextResponse.json(
-        {
-          error: `Failed to create checkout session`,
-          debug: {
-            yocoStatus: yocoResponse.status,
-            yocoError: errorData,
-            hasSecretKey: !!process.env.YOCO_SECRET_KEY,
-            secretKeyPrefix: process.env.YOCO_SECRET_KEY?.slice(0, 8),
-            baseUrl,
-          },
-        },
+        { error: `Failed to create checkout session` },
         { status: 500 }
       );
     }
