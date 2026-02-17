@@ -15,7 +15,7 @@ export default function DisplaySection({ product }: { product: Product }) {
   const { r, g, b } = hexToRgb(product.accentColor);
 
   return (
-    <section id="display" className="relative bg-black section-padding px-6 overflow-hidden">
+    <section id="display" className="relative bg-black section-padding px-6 overflow-hidden scroll-mt-14">
       <div className="max-w-5xl mx-auto text-center">
         <AnimateIn>
           <h2 className="font-bold text-[clamp(2rem,5vw,3.5rem)] text-white tracking-[-0.02em] leading-[1.05]" style={{ fontFamily: "var(--font-display)" }}>

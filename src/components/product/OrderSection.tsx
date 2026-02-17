@@ -42,7 +42,7 @@ export default function OrderSection({ product }: { product: Product }) {
   const checkoutUrl = `/checkout?product=${product.slug}&ram=${selectedRam}&storage=${effectiveStorage}&color=${activeColorKey}`;
 
   return (
-    <section id="order" className="relative bg-black section-padding px-6 overflow-hidden">
+    <section id="order" className="relative bg-black section-padding px-6 overflow-hidden scroll-mt-14">
       <div
         className="absolute inset-0 pointer-events-none opacity-60"
         style={{
