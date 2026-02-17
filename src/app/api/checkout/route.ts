@@ -86,9 +86,16 @@ export async function POST(request: Request) {
 
     if (!yocoResponse.ok) {
       const errorData = await yocoResponse.text();
-      console.error("Yoco API error:", errorData);
+      console.error("Yoco API error:", yocoResponse.status, errorData);
+      console.error("Yoco request details:", {
+        amount: amountInCents,
+        successUrl: `${baseUrl}/order/success?product=${product.slug}`,
+        cancelUrl: `${baseUrl}/order/cancelled?product=${product.slug}`,
+        hasSecretKey: !!process.env.YOCO_SECRET_KEY,
+        secretKeyPrefix: process.env.YOCO_SECRET_KEY?.slice(0, 8),
+      });
       return NextResponse.json(
-        { error: "Failed to create checkout session" },
+        { error: `Failed to create checkout session` },
         { status: 500 }
       );
     }
