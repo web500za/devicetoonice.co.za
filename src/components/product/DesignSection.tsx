@@ -13,7 +13,7 @@ export default function DesignSection({ product }: { product: Product }) {
       <div className="max-w-6xl mx-auto">
         <div className="text-center">
           <AnimateIn>
-            <h2 className="font-[family-name:var(--font-display)] font-bold text-[clamp(2rem,5vw,3.5rem)] text-white tracking-[-0.03em] leading-[1.05]">
+            <h2 className="font-bold text-[clamp(2rem,5vw,3.5rem)] text-white tracking-[-0.02em] leading-[1.05]" style={{ fontFamily: "var(--font-display)" }}>
               {product.designHeadline.split("\n").map((line, i) => (
                 <span key={i}>
                   {i > 0 && <br />}
@@ -24,7 +24,7 @@ export default function DesignSection({ product }: { product: Product }) {
           </AnimateIn>
 
           <AnimateIn delay={150}>
-            <p className="text-apple-gray text-base md:text-lg mt-5 max-w-lg mx-auto leading-relaxed font-[family-name:var(--font-body)]">
+            <p className="text-apple-gray text-base md:text-lg mt-5 max-w-lg mx-auto leading-relaxed">
               {product.designSubheadline.split("\n").map((line, i) => (
                 <span key={i}>
                   {i > 0 && <br className="hidden md:block" />}
@@ -52,7 +52,7 @@ export default function DesignSection({ product }: { product: Product }) {
                       stat.value
                     )}
                   </div>
-                  <p className="text-apple-gray text-xs md:text-sm mt-1 uppercase tracking-widest font-[family-name:var(--font-body)]">
+                  <p className="text-apple-gray text-xs md:text-sm mt-1 uppercase tracking-widest">
                     {stat.label}
                   </p>
                 </div>
@@ -88,11 +88,11 @@ export default function DesignSection({ product }: { product: Product }) {
                 />
               ))}
             </div>
-            <p className="text-apple-gray text-sm mt-3 font-[family-name:var(--font-body)]">
+            <p className="text-apple-gray text-sm mt-3">
               {product.colors[activeColor].name}
             </p>
 
-            <p className="text-apple-gray-text text-sm mt-6 font-[family-name:var(--font-body)]">
+            <p className="text-apple-gray-text text-sm mt-6">
               {product.designFootnote}
             </p>
           </div>

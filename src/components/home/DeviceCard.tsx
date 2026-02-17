@@ -40,17 +40,17 @@ export default function DeviceCard({ product }: { product: Product }) {
       </div>
 
       <div className="text-center">
-        <p className="text-apple-gray-text text-xs uppercase tracking-[0.2em] mb-1 font-[family-name:var(--font-body)]">
+        <p className="text-apple-gray-text text-xs uppercase tracking-[0.2em] mb-1">
           {product.brand}
         </p>
-        <h3 className="font-[family-name:var(--font-display)] font-bold text-white text-lg md:text-xl tracking-tight">
+        <h3 className="font-bold text-white text-lg md:text-xl tracking-tight" style={{ fontFamily: "var(--font-display)" }}>
           {product.name}
         </h3>
-        <p className="text-apple-gray text-sm mt-2 font-[family-name:var(--font-body)]">
+        <p className="text-apple-gray text-sm mt-2">
           From <span className="text-white font-semibold">{formatPrice(product.startingPrice)}</span>
         </p>
         <p
-          className="text-sm mt-3 font-[family-name:var(--font-body)] font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          className="text-sm mt-3 font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300"
           style={{ color: product.accentColor }}
         >
           View Details →

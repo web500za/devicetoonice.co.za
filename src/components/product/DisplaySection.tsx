@@ -18,7 +18,7 @@ export default function DisplaySection({ product }: { product: Product }) {
     <section id="display" className="relative bg-black section-padding px-6 overflow-hidden">
       <div className="max-w-5xl mx-auto text-center">
         <AnimateIn>
-          <h2 className="font-[family-name:var(--font-display)] font-bold text-[clamp(2rem,5vw,3.5rem)] text-white tracking-[-0.03em] leading-[1.05]">
+          <h2 className="font-bold text-[clamp(2rem,5vw,3.5rem)] text-white tracking-[-0.02em] leading-[1.05]" style={{ fontFamily: "var(--font-display)" }}>
             {product.displayHeadline.split("\n").map((line, i) => (
               <span key={i}>
                 {i > 0 && <br />}
@@ -29,7 +29,7 @@ export default function DisplaySection({ product }: { product: Product }) {
         </AnimateIn>
 
         <AnimateIn delay={150}>
-          <p className="text-apple-gray text-base md:text-lg mt-5 max-w-xl mx-auto leading-relaxed font-[family-name:var(--font-body)]">
+          <p className="text-apple-gray text-base md:text-lg mt-5 max-w-xl mx-auto leading-relaxed">
             {product.displaySubheadline.split("\n").map((line, i) => (
               <span key={i}>
                 {i > 0 && <br className="hidden md:block" />}
@@ -51,7 +51,7 @@ export default function DisplaySection({ product }: { product: Product }) {
                     separator={stat.separator || ""}
                   />
                 </div>
-                <p className="text-apple-gray text-xs md:text-sm mt-1 uppercase tracking-widest font-[family-name:var(--font-body)]">
+                <p className="text-apple-gray text-xs md:text-sm mt-1 uppercase tracking-widest">
                   {stat.label}
                 </p>
               </div>
@@ -70,7 +70,7 @@ export default function DisplaySection({ product }: { product: Product }) {
         </AnimateIn>
 
         <AnimateIn delay={100} className="mt-8">
-          <p className="text-apple-gray-text text-sm font-[family-name:var(--font-body)]">
+          <p className="text-apple-gray-text text-sm">
             {product.displayFootnote}
           </p>
         </AnimateIn>

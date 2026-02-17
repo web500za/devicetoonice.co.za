@@ -19,7 +19,7 @@ export default function CameraSection({ product }: { product: Product }) {
       <div className="max-w-6xl mx-auto">
         <div className="text-center">
           <AnimateIn>
-            <h2 className="font-[family-name:var(--font-display)] font-bold text-[clamp(2rem,5vw,3.5rem)] text-white tracking-[-0.03em] leading-[1.05]">
+            <h2 className="font-bold text-[clamp(2rem,5vw,3.5rem)] text-white tracking-[-0.02em] leading-[1.05]" style={{ fontFamily: "var(--font-display)" }}>
               {product.cameraHeadline.split("\n").map((line, i) => (
                 <span key={i}>
                   {i > 0 && <br />}
@@ -30,7 +30,7 @@ export default function CameraSection({ product }: { product: Product }) {
           </AnimateIn>
 
           <AnimateIn delay={150}>
-            <p className="text-apple-gray text-base md:text-lg mt-5 font-[family-name:var(--font-body)]">
+            <p className="text-apple-gray text-base md:text-lg mt-5">
               {product.cameraSubheadline}
             </p>
           </AnimateIn>
@@ -48,7 +48,7 @@ export default function CameraSection({ product }: { product: Product }) {
                       decimals={stat.decimals || 0}
                     />
                   </div>
-                  <p className="text-apple-gray text-xs md:text-sm mt-1 uppercase tracking-widest font-[family-name:var(--font-body)]">
+                  <p className="text-apple-gray text-xs md:text-sm mt-1 uppercase tracking-widest">
                     {stat.label}
                   </p>
                 </AnimateIn>
@@ -75,16 +75,16 @@ export default function CameraSection({ product }: { product: Product }) {
                   className="pl-5"
                   style={{ borderLeft: `2px solid rgba(${r}, ${g}, ${b}, 0.4)` }}
                 >
-                  <h3 className="font-[family-name:var(--font-display)] font-semibold text-white text-lg md:text-xl tracking-tight">
+                  <h3 className="font-semibold text-white text-lg md:text-xl tracking-tight" style={{ fontFamily: "var(--font-display)" }}>
                     {cam.name}
                   </h3>
                   <p
-                    className="text-sm mt-0.5 font-[family-name:var(--font-body)] font-medium"
+                    className="text-sm mt-0.5 font-medium"
                     style={{ color: product.accentColor }}
                   >
                     {cam.sensor}
                   </p>
-                  <p className="text-apple-gray text-sm mt-1 font-[family-name:var(--font-body)]">
+                  <p className="text-apple-gray text-sm mt-1">
                     {cam.detail}
                   </p>
                 </div>

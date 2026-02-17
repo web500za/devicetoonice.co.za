@@ -25,19 +25,22 @@ export default function Hero({ product }: { product: Product }) {
       <div className="absolute inset-0 pointer-events-none" style={glowStyle} />
 
       <AnimateIn delay={100} className="text-center relative z-10">
-        <p className="text-apple-gray text-xs md:text-sm uppercase tracking-[0.35em] mb-5 font-[family-name:var(--font-body)]">
+        <p className="text-apple-gray text-xs md:text-sm uppercase tracking-[0.35em] mb-5">
           Device Too Nice
         </p>
       </AnimateIn>
 
       <AnimateIn delay={250} className="text-center relative z-10">
-        <h1 className="font-[family-name:var(--font-display)] font-extrabold text-[clamp(2.25rem,10vw,7.5rem)] text-white tracking-[-0.04em] leading-[0.9]">
+        <h1
+          className="font-bold text-[clamp(2.5rem,10vw,7rem)] text-white tracking-[-0.02em] leading-[1.05]"
+          style={{ fontFamily: "var(--font-display)" }}
+        >
           {product.name}
         </h1>
       </AnimateIn>
 
       <AnimateIn delay={450} className="text-center relative z-10">
-        <p className="font-[family-name:var(--font-display)] text-[clamp(1.1rem,2.5vw,1.75rem)] text-apple-gray mt-3 tracking-[-0.01em] font-medium">
+        <p className="text-[clamp(1.1rem,2.5vw,1.75rem)] text-apple-gray mt-3 tracking-[-0.01em] font-medium">
           {product.tagline}
         </p>
       </AnimateIn>
@@ -54,7 +57,7 @@ export default function Hero({ product }: { product: Product }) {
       </AnimateIn>
 
       <AnimateIn delay={850} className="text-center relative z-10 mt-8">
-        <p className="text-apple-gray text-base md:text-lg font-[family-name:var(--font-body)]">
+        <p className="text-apple-gray text-base md:text-lg">
           From <span className="text-white font-semibold">{formatPrice(product.startingPrice)}</span>
           <span className="text-apple-gray-text text-sm ml-2">free delivery · no customs · 7–10 days</span>
         </p>
@@ -63,7 +66,7 @@ export default function Hero({ product }: { product: Product }) {
       <AnimateIn delay={1000} className="flex items-center gap-5 mt-5 relative z-10">
         <a
           href="#display"
-          className="hover:opacity-80 transition-colors text-base font-[family-name:var(--font-body)] font-medium group"
+          className="hover:opacity-80 transition-colors text-base font-medium group"
           style={{ color: product.accentColor }}
         >
           Learn more{" "}
@@ -71,7 +74,7 @@ export default function Hero({ product }: { product: Product }) {
         </a>
         <a
           href="#order"
-          className="text-white px-7 py-2.5 rounded-full font-semibold transition-colors text-base font-[family-name:var(--font-body)]"
+          className="text-white px-7 py-2.5 rounded-full font-semibold transition-colors text-base"
           style={{ backgroundColor: product.accentColor }}
           onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = product.accentHover)}
           onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = product.accentColor)}

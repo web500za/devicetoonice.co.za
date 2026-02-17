@@ -1,9 +1,6 @@
 export type ProductSlug =
   | "oneplus15"
-  | "xiaomi-17-pro"
-  | "oppo-find-x9-pro"
-  | "redmi-k90-pro-max"
-  | "vivo-x200-ultra";
+  | "oppo-find-x9-pro";
 
 export interface ProductVariant {
   ram: string;

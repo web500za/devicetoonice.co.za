@@ -67,8 +67,8 @@ export default function CheckoutContent() {
     return (
       <div className="min-h-screen bg-black flex items-center justify-center px-6">
         <div className="text-center">
-          <p className="text-white text-lg font-[family-name:var(--font-display)]">Product not found</p>
-          <a href="/" className="text-apple-gray hover:text-white transition-colors text-sm mt-4 inline-block font-[family-name:var(--font-body)]">
+          <p className="text-white text-lg" style={{ fontFamily: "var(--font-display)" }}>Product not found</p>
+          <a href="/" className="text-apple-gray hover:text-white transition-colors text-sm mt-4 inline-block">
             &larr; Back to home
           </a>
         </div>
@@ -192,10 +192,10 @@ function CheckoutForm({
   }
 
   const inputClass =
-    "w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm font-[family-name:var(--font-body)] placeholder:text-white/30 focus:outline-none transition-colors";
-  const errorClass = "text-red-400 text-xs mt-1 font-[family-name:var(--font-body)]";
+    "w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder:text-white/30 focus:outline-none transition-colors";
+  const errorClass = "text-red-400 text-xs mt-1";
   const labelClass =
-    "text-apple-gray text-xs uppercase tracking-widest mb-2 block font-[family-name:var(--font-body)]";
+    "text-apple-gray text-xs uppercase tracking-widest mb-2 block";
 
   return (
     <div className="min-h-screen bg-black px-6 py-16 md:py-24">
@@ -203,14 +203,14 @@ function CheckoutForm({
         <AnimateIn>
           <a
             href={`/${product.slug}#order`}
-            className="text-apple-gray hover:text-white transition-colors text-sm font-[family-name:var(--font-body)] inline-flex items-center gap-2 mb-10"
+            className="text-apple-gray hover:text-white transition-colors text-sm inline-flex items-center gap-2 mb-10"
           >
             <span>&larr;</span> Back to {product.name}
           </a>
         </AnimateIn>
 
         <AnimateIn delay={100}>
-          <h1 className="font-[family-name:var(--font-display)] font-bold text-[clamp(2rem,5vw,3rem)] text-white tracking-[-0.03em] leading-[1.05] mb-12">
+          <h1 className="font-bold text-[clamp(2rem,5vw,3rem)] text-white tracking-[-0.02em] leading-[1.05] mb-12" style={{ fontFamily: "var(--font-display)" }}>
             Checkout
           </h1>
         </AnimateIn>
@@ -219,7 +219,7 @@ function CheckoutForm({
           <div className="lg:col-span-2">
             <AnimateIn delay={200}>
               <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-6 md:p-8 sticky top-8">
-                <h2 className="font-[family-name:var(--font-display)] font-semibold text-white text-lg tracking-tight mb-6">
+                <h2 className="font-semibold text-white text-lg tracking-tight mb-6" style={{ fontFamily: "var(--font-display)" }}>
                   Order Summary
                 </h2>
 
@@ -232,7 +232,7 @@ function CheckoutForm({
                   />
                 </div>
 
-                <div className="space-y-3 text-sm font-[family-name:var(--font-body)]">
+                <div className="space-y-3 text-sm">
                   <div className="flex justify-between">
                     <span className="text-apple-gray">Product</span>
                     <span className="text-white font-medium">{product.name}</span>
@@ -274,7 +274,7 @@ function CheckoutForm({
           <div className="lg:col-span-3">
             <AnimateIn delay={300}>
               <form onSubmit={handleSubmit} noValidate>
-                <h2 className="font-[family-name:var(--font-display)] font-semibold text-white text-lg tracking-tight mb-6">
+                <h2 className="font-semibold text-white text-lg tracking-tight mb-6" style={{ fontFamily: "var(--font-display)" }}>
                   Delivery Details
                 </h2>
 
@@ -401,7 +401,7 @@ function CheckoutForm({
 
                 {submitError && (
                   <div className="mb-4 p-4 rounded-xl bg-red-500/10 border border-red-500/20">
-                    <p className="text-red-400 text-sm font-[family-name:var(--font-body)]">
+                    <p className="text-red-400 text-sm">
                       {submitError}
                     </p>
                   </div>
@@ -410,7 +410,7 @@ function CheckoutForm({
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="w-full text-white py-4 rounded-full font-semibold text-lg transition-all duration-300 font-[family-name:var(--font-body)] disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full text-white py-4 rounded-full font-semibold text-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                   style={{ backgroundColor: product.accentColor }}
                   onMouseEnter={(e) => {
                     if (!submitting) {
@@ -426,7 +426,7 @@ function CheckoutForm({
                   {submitting ? "Redirecting to payment..." : `Pay ${formatPrice(effectiveVariant.price)}`}
                 </button>
 
-                <p className="text-apple-gray-text text-xs text-center mt-4 font-[family-name:var(--font-body)]">
+                <p className="text-apple-gray-text text-xs text-center mt-4">
                   You&apos;ll be redirected to Yoco&apos;s secure payment page
                 </p>
               </form>

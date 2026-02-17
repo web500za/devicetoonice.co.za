@@ -25,7 +25,7 @@ export default function BatterySection({ product }: { product: Product }) {
 
       <div className="max-w-5xl mx-auto text-center relative z-10">
         <AnimateIn>
-          <h2 className="font-[family-name:var(--font-display)] font-bold text-[clamp(2rem,5vw,3.5rem)] text-white tracking-[-0.03em] leading-[1.05]">
+          <h2 className="font-bold text-[clamp(2rem,5vw,3.5rem)] text-white tracking-[-0.02em] leading-[1.05]" style={{ fontFamily: "var(--font-display)" }}>
             {product.batteryHeadline}
           </h2>
         </AnimateIn>
@@ -34,11 +34,11 @@ export default function BatterySection({ product }: { product: Product }) {
           <div className="mt-12 md:mt-16">
             <div className="stat-number text-[clamp(2.5rem,10vw,7rem)] text-white">
               <CountUp end={product.batteryCapacity} separator="," />
-              <span className="text-[0.4em] text-apple-gray ml-2 font-[family-name:var(--font-body)] tracking-normal">
+              <span className="text-[0.4em] text-apple-gray ml-2 tracking-normal">
                 mAh
               </span>
             </div>
-            <p className="text-apple-gray text-base md:text-lg mt-3 font-[family-name:var(--font-body)]">
+            <p className="text-apple-gray text-base md:text-lg mt-3">
               {product.batteryCapacityNote}
             </p>
           </div>
@@ -51,7 +51,7 @@ export default function BatterySection({ product }: { product: Product }) {
                 <div className="stat-number text-[clamp(2rem,5vw,3.5rem)] text-white">
                   <CountUp end={stat.value} suffix={stat.suffix} />
                 </div>
-                <p className="text-apple-gray text-xs md:text-sm mt-1 uppercase tracking-widest font-[family-name:var(--font-body)]">
+                <p className="text-apple-gray text-xs md:text-sm mt-1 uppercase tracking-widest">
                   {stat.label}
                 </p>
               </div>
@@ -60,10 +60,10 @@ export default function BatterySection({ product }: { product: Product }) {
         </AnimateIn>
 
         <AnimateIn delay={200} className="mt-12">
-          <p className="text-white/80 text-lg md:text-xl font-[family-name:var(--font-display)] font-medium tracking-tight">
+          <p className="text-white/80 text-lg md:text-xl font-medium tracking-tight" style={{ fontFamily: "var(--font-display)" }}>
             {product.batteryHighlight}
           </p>
-          <p className="text-apple-gray-text text-sm mt-2 font-[family-name:var(--font-body)]">
+          <p className="text-apple-gray-text text-sm mt-2">
             {product.batteryFootnote}
           </p>
         </AnimateIn>

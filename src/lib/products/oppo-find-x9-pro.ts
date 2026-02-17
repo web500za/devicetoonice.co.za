@@ -9,7 +9,7 @@ export const oppoFindX9Pro: Product = {
   accentHover: "#178e70",
 
   heroImage:
-    "https://www.giztop.com/media/catalog/product/cache/7273d816367fe28095c8d1187b15b971/o/p/oppo_find_x9_pro-.jpg",
+    "https://www.giztop.com/media/catalog/product/cache/97cc1143d2e20f2b0c8ea91aaa12053c/f/i/findx9pro-01.jpg",
   heroSubtitle: "See Further. Shoot Better.",
   startingPrice: 19500,
 
@@ -95,8 +95,8 @@ export const oppoFindX9Pro: Product = {
       specs: [
         { label: "Chipset", value: "Dimensity 9500 (3nm)" },
         { label: "CPU", value: "1\u00d74.5GHz + 3\u00d73.5GHz + 4\u00d72.5GHz" },
-        { label: "RAM", value: "16 GB LPDDR5X" },
-        { label: "Storage", value: "256 / 512GB UFS 4.0" },
+        { label: "RAM", value: "12 / 16 GB LPDDR5X" },
+        { label: "Storage", value: "256 / 512GB / 1TB UFS 4.0" },
         { label: "OS", value: "Android 16 \u00b7 ColorOS 16" },
       ],
     },
@@ -142,12 +142,14 @@ export const oppoFindX9Pro: Product = {
     },
   ],
 
-  // Variants
-  ramOptions: ["16GB"],
-  storageOptions: ["256GB", "512GB"],
+  // Variants (matching Giztop stock)
+  ramOptions: ["12GB", "16GB"],
+  storageOptions: ["256GB", "512GB", "1TB"],
   variants: [
-    { ram: "16GB", storage: "256GB", price: 19500, colors: ["titanium", "white"] },
-    { ram: "16GB", storage: "512GB", price: 23500, colors: ["titanium", "white", "red"] },
+    { ram: "12GB", storage: "256GB", price: 19500, colors: ["titanium", "white"] },
+    { ram: "12GB", storage: "512GB", price: 21000, colors: ["titanium", "white", "red"] },
+    { ram: "16GB", storage: "512GB", price: 22000, colors: ["titanium", "white", "red"] },
+    { ram: "16GB", storage: "1TB", price: 23500, colors: ["titanium", "white", "red"] },
   ],
   colors: [
     {

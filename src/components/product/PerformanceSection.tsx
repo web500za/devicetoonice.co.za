@@ -12,7 +12,7 @@ export default function PerformanceSection({ product }: { product: Product }) {
       <div className="max-w-5xl mx-auto text-center relative z-10">
         <AnimateIn>
           <p
-            className="text-xs md:text-sm uppercase tracking-[0.3em] mb-4 font-[family-name:var(--font-body)] font-semibold"
+            className="text-xs md:text-sm uppercase tracking-[0.3em] mb-4 font-semibold"
             style={{ color: product.accentColor }}
           >
             {product.chipLabel}
@@ -20,7 +20,7 @@ export default function PerformanceSection({ product }: { product: Product }) {
         </AnimateIn>
 
         <AnimateIn delay={150}>
-          <h2 className="font-[family-name:var(--font-display)] font-bold text-[clamp(2rem,5vw,3.5rem)] text-white tracking-[-0.03em] leading-[1.05]">
+          <h2 className="font-bold text-[clamp(2rem,5vw,3.5rem)] text-white tracking-[-0.02em] leading-[1.05]" style={{ fontFamily: "var(--font-display)" }}>
             {product.performanceHeadline.split("\n").map((line, i) => (
               <span key={i}>
                 {i > 0 && <br />}
@@ -31,7 +31,7 @@ export default function PerformanceSection({ product }: { product: Product }) {
         </AnimateIn>
 
         <AnimateIn delay={300}>
-          <p className="text-apple-gray text-base md:text-lg mt-5 max-w-lg mx-auto leading-relaxed font-[family-name:var(--font-body)]">
+          <p className="text-apple-gray text-base md:text-lg mt-5 max-w-lg mx-auto leading-relaxed">
             {product.performanceSubheadline.split("\n").map((line, i) => (
               <span key={i}>
                 {i > 0 && <br className="hidden md:block" />}
@@ -53,7 +53,7 @@ export default function PerformanceSection({ product }: { product: Product }) {
                     separator={stat.separator || ""}
                   />
                 </div>
-                <p className="text-apple-gray text-xs md:text-sm mt-1 uppercase tracking-widest font-[family-name:var(--font-body)]">
+                <p className="text-apple-gray text-xs md:text-sm mt-1 uppercase tracking-widest">
                   {stat.label}
                 </p>
               </div>
@@ -66,7 +66,7 @@ export default function PerformanceSection({ product }: { product: Product }) {
             {product.performanceTags.map((tag) => (
               <span
                 key={tag}
-                className="text-apple-gray text-xs md:text-sm border border-white/10 rounded-full px-4 py-1.5 font-[family-name:var(--font-body)]"
+                className="text-apple-gray text-xs md:text-sm border border-white/10 rounded-full px-4 py-1.5"
               >
                 {tag}
               </span>

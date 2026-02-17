@@ -10,16 +10,17 @@ export default function Footer() {
           <div>
             <a
               href="/"
-              className="font-[family-name:var(--font-display)] font-bold text-white text-xl tracking-tight hover:opacity-80 transition-opacity"
+              className="font-bold text-white text-xl tracking-tight hover:opacity-80 transition-opacity"
+              style={{ fontFamily: "var(--font-display)" }}
             >
               Device Too Nice
             </a>
-            <p className="text-apple-gray text-sm mt-2 font-[family-name:var(--font-body)] max-w-xs">
+            <p className="text-apple-gray text-sm mt-2 max-w-xs">
               Premium smartphones, delivered to your door across South Africa.
             </p>
           </div>
 
-          <div className="flex gap-12 md:gap-16 text-sm font-[family-name:var(--font-body)]">
+          <div className="flex gap-12 md:gap-16 text-sm">
             <div>
               <h4 className="text-white font-medium mb-3">Shop</h4>
               <ul className="space-y-2 text-apple-gray">
@@ -51,10 +52,10 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 pt-6 border-t border-white/[0.06] flex flex-col sm:flex-row justify-between items-center gap-3">
-          <p className="text-apple-gray-text text-xs font-[family-name:var(--font-body)]">
+          <p className="text-apple-gray-text text-xs">
             &copy; {new Date().getFullYear()} Device Too Nice. All rights reserved.
           </p>
-          <p className="text-apple-gray-text text-xs font-[family-name:var(--font-body)] text-center sm:text-right">
+          <p className="text-apple-gray-text text-xs text-center sm:text-right">
             All prices in ZAR. Free delivery nationwide. No customs fees. 7–10 day delivery.
           </p>
         </div>

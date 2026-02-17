@@ -27,7 +27,8 @@ export default function StickyNav({ product }: { product: Product }) {
         <div className="max-w-6xl mx-auto px-5 h-12 flex items-center justify-between">
           <a
             href="/"
-            className="font-[family-name:var(--font-display)] font-bold text-white text-[15px] tracking-tight hover:opacity-80 transition-opacity"
+            className="font-bold text-white text-[15px] tracking-tight hover:opacity-80 transition-opacity"
+            style={{ fontFamily: "var(--font-display)" }}
           >
             Device Too Nice
           </a>

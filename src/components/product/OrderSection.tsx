@@ -52,7 +52,7 @@ export default function OrderSection({ product }: { product: Product }) {
 
       <div className="max-w-4xl mx-auto text-center relative z-10">
         <AnimateIn>
-          <h2 className="font-[family-name:var(--font-display)] font-bold text-[clamp(2rem,5vw,3.5rem)] text-white tracking-[-0.03em] leading-[1.05]">
+          <h2 className="font-bold text-[clamp(2rem,5vw,3.5rem)] text-white tracking-[-0.02em] leading-[1.05]" style={{ fontFamily: "var(--font-display)" }}>
             Get Yours Today.
           </h2>
         </AnimateIn>
@@ -62,7 +62,7 @@ export default function OrderSection({ product }: { product: Product }) {
             <div className="stat-number text-[clamp(2.5rem,6vw,4rem)] text-white transition-all duration-300">
               {formatPrice(effectiveVariant.price)}
             </div>
-            <p className="text-apple-gray text-sm mt-2 font-[family-name:var(--font-body)]">
+            <p className="text-apple-gray text-sm mt-2">
               {selectedRam} RAM · {effectiveStorage} · Free delivery nationwide · 7–10 days
             </p>
           </div>
@@ -80,7 +80,7 @@ export default function OrderSection({ product }: { product: Product }) {
 
         {/* RAM selector */}
         <AnimateIn delay={250} className="mt-10">
-          <p className="text-apple-gray text-xs uppercase tracking-widest mb-4 font-[family-name:var(--font-body)]">
+          <p className="text-apple-gray text-xs uppercase tracking-widest mb-4">
             Memory
           </p>
           <div className="flex justify-center gap-3">
@@ -96,7 +96,7 @@ export default function OrderSection({ product }: { product: Product }) {
                     if (firstAvailable) setSelectedStorage(firstAvailable);
                   }
                 }}
-                className="px-6 py-2.5 rounded-xl text-sm font-[family-name:var(--font-body)] font-medium transition-all duration-300 border"
+                className="px-6 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 border"
                 style={
                   selectedRam === ram
                     ? {
@@ -115,7 +115,7 @@ export default function OrderSection({ product }: { product: Product }) {
 
         {/* Storage selector */}
         <AnimateIn delay={300} className="mt-6">
-          <p className="text-apple-gray text-xs uppercase tracking-widest mb-4 font-[family-name:var(--font-body)]">
+          <p className="text-apple-gray text-xs uppercase tracking-widest mb-4">
             Storage
           </p>
           <div className="flex justify-center gap-3">
@@ -126,7 +126,7 @@ export default function OrderSection({ product }: { product: Product }) {
                   key={storage}
                   onClick={() => available && setSelectedStorage(storage)}
                   disabled={!available}
-                  className="px-6 py-2.5 rounded-xl text-sm font-[family-name:var(--font-body)] font-medium transition-all duration-300 border"
+                  className="px-6 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 border"
                   style={
                     effectiveStorage === storage
                       ? {
@@ -152,7 +152,7 @@ export default function OrderSection({ product }: { product: Product }) {
 
         {/* Color picker */}
         <AnimateIn delay={350} className="mt-8">
-          <p className="text-apple-gray text-xs uppercase tracking-widest mb-3 font-[family-name:var(--font-body)]">
+          <p className="text-apple-gray text-xs uppercase tracking-widest mb-3">
             Colour
           </p>
           <div className="flex items-center justify-center gap-4">
@@ -172,7 +172,7 @@ export default function OrderSection({ product }: { product: Product }) {
               />
             ))}
           </div>
-          <p className="text-apple-gray text-sm mt-2 font-[family-name:var(--font-body)]">
+          <p className="text-apple-gray text-sm mt-2">
             {activeColor.name}
           </p>
         </AnimateIn>
@@ -181,7 +181,7 @@ export default function OrderSection({ product }: { product: Product }) {
         <AnimateIn delay={450} className="mt-10">
           <a
             href={checkoutUrl}
-            className="inline-block text-white px-10 py-3.5 rounded-full font-semibold text-lg transition-all duration-300 font-[family-name:var(--font-body)]"
+            className="inline-block text-white px-10 py-3.5 rounded-full font-semibold text-lg transition-all duration-300"
             style={{ backgroundColor: product.accentColor }}
             onMouseEnter={(e) => {
               e.currentTarget.style.backgroundColor = product.accentHover;
@@ -198,7 +198,7 @@ export default function OrderSection({ product }: { product: Product }) {
 
         {/* Trust signals */}
         <AnimateIn delay={550} className="mt-10">
-          <div className="flex flex-wrap justify-center gap-6 md:gap-10 text-apple-gray text-xs md:text-sm font-[family-name:var(--font-body)]">
+          <div className="flex flex-wrap justify-center gap-6 md:gap-10 text-apple-gray text-xs md:text-sm">
             <span className="flex items-center gap-2">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.747L15.47 4.397A2.25 2.25 0 0 0 13.643 3.5H9.75v10.75h10.5" />

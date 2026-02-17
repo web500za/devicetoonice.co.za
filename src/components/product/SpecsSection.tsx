@@ -8,7 +8,7 @@ export default function SpecsSection({ product }: { product: Product }) {
     <section className="bg-apple-light section-padding px-6">
       <div className="max-w-6xl mx-auto">
         <AnimateIn>
-          <h2 className="font-[family-name:var(--font-display)] font-bold text-[clamp(2rem,5vw,3rem)] text-apple-dark tracking-[-0.03em] leading-[1.05] text-center">
+          <h2 className="font-bold text-[clamp(2rem,5vw,3rem)] text-apple-dark tracking-[-0.02em] leading-[1.05] text-center" style={{ fontFamily: "var(--font-display)" }}>
             Tech Specs
           </h2>
         </AnimateIn>
@@ -17,14 +17,14 @@ export default function SpecsSection({ product }: { product: Product }) {
           {product.specCategories.map((cat, i) => (
             <AnimateIn key={cat.title} delay={i * 80}>
               <div className="bg-white rounded-2xl p-6 md:p-7 shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
-                <h3 className="font-[family-name:var(--font-display)] font-semibold text-apple-dark text-lg tracking-tight mb-4">
+                <h3 className="font-semibold text-apple-dark text-lg tracking-tight mb-4" style={{ fontFamily: "var(--font-display)" }}>
                   {cat.title}
                 </h3>
                 <div className="space-y-3">
                   {cat.specs.map((spec) => (
                     <div
                       key={spec.label}
-                      className="flex justify-between items-start gap-3 text-sm font-[family-name:var(--font-body)]"
+                      className="flex justify-between items-start gap-3 text-sm"
                     >
                       <span className="text-apple-gray-text shrink-0">{spec.label}</span>
                       <span className="text-apple-dark text-right font-medium">{spec.value}</span>

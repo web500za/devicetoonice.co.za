@@ -9,8 +9,8 @@
   --color-apple-dark: #1d1d1f;
   --color-apple-gray-text: #6e6e73;
 
-  --font-display: "Syne", ui-sans-serif, system-ui, sans-serif;
-  --font-body: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "SF Pro Display", -apple-system, BlinkMacSystemFont, system-ui, "Helvetica Neue", sans-serif;
+  --font-body: "SF Pro Text", -apple-system, BlinkMacSystemFont, system-ui, "Helvetica Neue", sans-serif;
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-pulse-slow: pulse-slow 3s ease-in-out infinite;
@@ -52,20 +52,11 @@ body {
   color: #fff;
 }
 
-/* ---- Radial glow utility ---- */
-.glow-red {
-  background: radial-gradient(ellipse 600px 400px at 50% 60%, rgba(227, 25, 55, 0.08) 0%, transparent 70%);
-}
-
-.glow-red-strong {
-  background: radial-gradient(ellipse 500px 350px at 50% 50%, rgba(227, 25, 55, 0.15) 0%, transparent 70%);
-}
-
 /* ---- Stat number styling ---- */
 .stat-number {
   font-family: var(--font-display);
-  font-weight: 700;
-  letter-spacing: -0.04em;
+  font-weight: 600;
+  letter-spacing: -0.02em;
   line-height: 1;
 }
 
@@ -93,6 +84,12 @@ body {
 /* ---- Smooth image rendering ---- */
 img {
   image-rendering: -webkit-optimize-contrast;
+}
+
+/* ---- White-bg product images on dark backgrounds ---- */
+.product-img-mask {
+  -webkit-mask-image: radial-gradient(ellipse 85% 85% at center, black 60%, transparent 100%);
+  mask-image: radial-gradient(ellipse 85% 85% at center, black 60%, transparent 100%);
 }
 
 /* ---- Custom scrollbar ---- */
