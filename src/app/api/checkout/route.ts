@@ -95,7 +95,16 @@ export async function POST(request: Request) {
         secretKeyPrefix: process.env.YOCO_SECRET_KEY?.slice(0, 8),
       });
       return NextResponse.json(
-        { error: `Failed to create checkout session` },
+        {
+          error: `Failed to create checkout session`,
+          debug: {
+            yocoStatus: yocoResponse.status,
+            yocoError: errorData,
+            hasSecretKey: !!process.env.YOCO_SECRET_KEY,
+            secretKeyPrefix: process.env.YOCO_SECRET_KEY?.slice(0, 8),
+            baseUrl,
+          },
+        },
         { status: 500 }
       );
     }
