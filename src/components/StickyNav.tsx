@@ -38,7 +38,7 @@ export default function StickyNav({ product }: { product: Product }) {
               {product.name}
             </span>
             <a
-              href="#order"
+              href="/checkout"
               className="text-white text-[13px] font-semibold px-4 py-1.5 rounded-full transition-colors"
               style={{ backgroundColor: product.accentColor }}
               onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = product.accentHover)}
