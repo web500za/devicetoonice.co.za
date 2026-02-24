@@ -73,7 +73,7 @@ export default function Hero({ product }: { product: Product }) {
           <span className="inline-block transition-transform group-hover:translate-y-0.5">↓</span>
         </a>
         <a
-          href="#order"
+          href="/checkout"
           className="text-white px-7 py-2.5 rounded-full font-semibold transition-colors text-base"
           style={{ backgroundColor: product.accentColor }}
           onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = product.accentHover)}
