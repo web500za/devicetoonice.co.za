@@ -2,20 +2,19 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Device Too Nice — Premium Smartphones | South Africa",
+  title: "Device Too Nice — OnePlus 15 | South Africa",
   description:
-    "Premium smartphones delivered to your door. OnePlus 15, OPPO Find X9 Pro. No customs fees. Free delivery across South Africa.",
+    "OnePlus 15. Snapdragon 8 Elite. 7,300 mAh. From R15,000. Free delivery across South Africa.",
   keywords: [
-    "buy smartphones South Africa",
     "OnePlus 15",
-    "OPPO Find X9 Pro",
+    "buy OnePlus South Africa",
     "Device Too Nice",
     "flagship phone South Africa",
   ],
   openGraph: {
-    title: "Device Too Nice — Premium Smartphones Delivered",
+    title: "Device Too Nice — OnePlus 15",
     description:
-      "Premium smartphones imported directly. No customs. Free delivery across South Africa.",
+      "OnePlus 15. From R15,000. Free delivery across South Africa.",
     siteName: "Device Too Nice",
     type: "website",
     locale: "en_ZA",

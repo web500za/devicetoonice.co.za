@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getProduct, findVariant, findColor } from "@/lib/products";
 import type { CheckoutRequest } from "@/lib/types";
 
+
 export async function POST(request: Request) {
   try {
     const body: CheckoutRequest = await request.json();

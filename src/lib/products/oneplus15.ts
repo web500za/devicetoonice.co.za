@@ -5,84 +5,10 @@ export const oneplus15: Product = {
   name: "OnePlus 15",
   brand: "OnePlus",
   tagline: "Power On. Limits Off.",
-  accentColor: "#e31937",
-  accentHover: "#c41430",
-
   heroImage:
     "https://www.giztop.com/media/catalog/product/cache/7273d816367fe28095c8d1187b15b971/o/n/oneplus_15.png",
-  heroSubtitle: "Power On. Limits Off.",
   startingPrice: 15000,
 
-  // Display
-  displayHeadline: "See Everything.\nMiss Nothing.",
-  displaySubheadline:
-    "The world's first 165Hz display at 1.5K resolution.\n10-bit LTPO AMOLED. 1,800 nits of searing brightness.",
-  displayStats: [
-    { value: 6.78, decimals: 2, suffix: "\u2033", label: "Display" },
-    { value: 165, suffix: "Hz", label: "Refresh Rate" },
-    { value: 1800, separator: ",", suffix: " nits", label: "Peak Brightness" },
-  ],
-  displayImage:
-    "https://www.giztop.com/media/catalog/product/cache/97cc1143d2e20f2b0c8ea91aaa12053c/o/n/oneplus_15_black_1.png",
-  displayFootnote: "100% DCI-P3 \u00b7 HDR10+ \u00b7 Dolby Vision \u00b7 Gorilla Glass Victus 2",
-
-  // Performance
-  chipLabel: "Snapdragon 8 Elite",
-  performanceHeadline: "Raw. Unmatched.\nPower.",
-  performanceSubheadline:
-    "The fastest mobile chipset ever built.\nEverything you do, instantly.",
-  performanceStats: [
-    { value: 3, suffix: "nm", label: "Process" },
-    { value: 4.6, decimals: 1, suffix: "GHz", label: "Clock Speed" },
-    { value: 16, suffix: "GB", label: "LPDDR5X" },
-  ],
-  performanceTags: ["Qualcomm Oryon CPU", "Adreno 840 GPU", "UFS 4.1 Storage", "Wi-Fi 7"],
-
-  // Camera
-  cameraHeadline: "Every Shot.\nA Masterpiece.",
-  cameraSubheadline: "Triple 50MP camera system. Powered by DetailMax Engine.",
-  cameraStats: [
-    { value: 50, suffix: "MP", label: "Main Sensor" },
-    { value: 3.5, decimals: 1, suffix: "\u00d7", label: "Optical Zoom" },
-    { value: 4, suffix: "K120fps", label: "Dolby Vision" },
-    { value: 8, suffix: "K", label: "Video" },
-  ],
-  cameraImage:
-    "https://www.giztop.com/media/catalog/product/cache/97cc1143d2e20f2b0c8ea91aaa12053c/o/n/oneplus_15_black_3.png",
-  cameraDetails: [
-    { name: "Main Camera", sensor: "Sony IMX906", detail: "50MP \u00b7 f/1.8 \u00b7 OIS \u00b7 24mm" },
-    {
-      name: "Telephoto",
-      sensor: "Periscope Lens",
-      detail: "50MP \u00b7 f/2.8 \u00b7 3.5\u00d7 optical \u00b7 120\u00d7 digital",
-    },
-    { name: "Ultra-Wide", sensor: "116\u00b0 Field of View", detail: "50MP \u00b7 f/2.0 \u00b7 Autofocus" },
-  ],
-
-  // Battery
-  batteryHeadline: "Outlast Everything.",
-  batteryCapacity: 7300,
-  batteryCapacityNote: "The largest battery ever in a flagship smartphone.",
-  batteryStats: [
-    { value: 120, suffix: "W", label: "Wired Charging" },
-    { value: 50, suffix: "W", label: "Wireless" },
-    { value: 31, suffix: "hrs", label: "Video Playback" },
-  ],
-  batteryHighlight: "0 to 50% in 15 minutes.",
-  batteryFootnote: "Charger included in the box.",
-
-  // Design
-  designHeadline: "Built Different.\nLiterally.",
-  designSubheadline:
-    "Nano-ceramic metal frame. Tougher than titanium.\nThe most durable flagship ever made.",
-  designStats: [
-    { value: "IP69K", label: "Water & Dust" },
-    { value: "26.3%", label: "Lighter Than Ti" },
-    { value: "134%", label: "More Wear Resistant" },
-  ],
-  designFootnote: "8.2mm thin \u00b7 215g \u00b7 Gorilla Glass Victus 2",
-
-  // Specs
   specCategories: [
     {
       title: "Display",
@@ -146,7 +72,6 @@ export const oneplus15: Product = {
     },
   ],
 
-  // Variants
   ramOptions: ["12GB", "16GB"],
   storageOptions: ["256GB", "512GB", "1TB"],
   variants: [

@@ -1,19 +1,11 @@
-import type { Product, ProductSlug, ProductVariant, ProductColor } from "./types";
+import type { Product, ProductVariant, ProductColor } from "./types";
 import { oneplus15 } from "./products/oneplus15";
-import { oppoFindX9Pro } from "./products/oppo-find-x9-pro";
 
-export const products: Product[] = [
-  oneplus15,
-  oppoFindX9Pro,
-];
-
-export const productMap: Record<ProductSlug, Product> = {
-  oneplus15,
-  "oppo-find-x9-pro": oppoFindX9Pro,
-};
+export const product = oneplus15;
 
 export function getProduct(slug: string): Product | undefined {
-  return productMap[slug as ProductSlug];
+  if (slug === "oneplus15") return oneplus15;
+  return undefined;
 }
 
 export function findVariant(

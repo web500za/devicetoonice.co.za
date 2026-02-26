@@ -1,61 +1,30 @@
 "use client";
 
 import { Suspense } from "react";
-import { useSearchParams } from "next/navigation";
-import AnimateIn from "@/components/AnimateIn";
-import { getProduct } from "@/lib/products";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 function CancelledContent() {
-  const searchParams = useSearchParams();
-  const productSlug = searchParams.get("product");
-  const product = productSlug ? getProduct(productSlug) : null;
-
-  const backUrl = "/checkout";
-
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center px-6">
-      <div className="max-w-lg mx-auto text-center relative z-10">
-        <AnimateIn>
-          <div className="w-20 h-20 rounded-full bg-white/5 flex items-center justify-center mx-auto mb-8">
-            <svg className="w-10 h-10 text-apple-gray" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </div>
-        </AnimateIn>
-
-        <AnimateIn delay={150}>
-          <h1 className="font-[family-name:var(--font-display)] font-bold text-[clamp(2rem,5vw,3rem)] text-white tracking-[-0.03em] leading-[1.05]">
-            Payment Cancelled
-          </h1>
-        </AnimateIn>
-
-        <AnimateIn delay={300}>
-          <p className="text-apple-gray text-base md:text-lg mt-5 leading-relaxed font-[family-name:var(--font-body)]">
-            Your payment was cancelled. No charges have been made.
-          </p>
-        </AnimateIn>
-
-        <AnimateIn delay={450}>
-          <p className="text-apple-gray-text text-sm mt-4 font-[family-name:var(--font-body)]">
-            Your selected configuration is still available. You can try again whenever you&apos;re ready.
-          </p>
-        </AnimateIn>
-
-        <AnimateIn delay={600} className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
-          <a
-            href={backUrl}
-            className="inline-block text-white px-8 py-3 rounded-full font-semibold text-base transition-all duration-300 font-[family-name:var(--font-body)]"
-            style={{ backgroundColor: product?.accentColor || "#e31937" }}
-          >
-            Try Again
-          </a>
-          <a
+    <div className="min-h-screen flex items-center justify-center px-6">
+      <div className="max-w-md mx-auto text-center">
+        <h1 className="text-3xl font-bold tracking-tight">
+          Payment Cancelled
+        </h1>
+        <p className="text-muted-foreground mt-4 leading-relaxed">
+          No charges have been made. Your configuration is still available.
+        </p>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+          <Button asChild size="lg" className="rounded-full px-8 h-12">
+            <Link href="/checkout">Try Again</Link>
+          </Button>
+          <Link
             href="/"
-            className="inline-block text-apple-gray hover:text-white transition-colors text-sm font-[family-name:var(--font-body)]"
+            className="text-muted-foreground hover:text-foreground transition-colors text-sm"
           >
             Back to Home
-          </a>
-        </AnimateIn>
+          </Link>
+        </div>
       </div>
     </div>
   );
@@ -63,11 +32,13 @@ function CancelledContent() {
 
 export default function OrderCancelledPage() {
   return (
-    <Suspense fallback={
-      <div className="min-h-screen bg-black flex items-center justify-center">
-        <div className="text-apple-gray text-sm font-[family-name:var(--font-body)]">Loading...</div>
-      </div>
-    }>
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center">
+          <p className="text-muted-foreground text-sm">Loading...</p>
+        </div>
+      }
+    >
       <CancelledContent />
     </Suspense>
   );
