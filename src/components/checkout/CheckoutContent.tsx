@@ -163,7 +163,7 @@ function CheckoutForm({
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="light-theme min-h-screen bg-white">
       {/* Header */}
       <header className="border-b border-border">
         <div className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">

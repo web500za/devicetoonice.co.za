@@ -6,7 +6,7 @@ import Link from "next/link";
 
 function CancelledContent() {
   return (
-    <div className="min-h-screen flex items-center justify-center px-6">
+    <div className="light-theme min-h-screen flex items-center justify-center px-6 bg-white">
       <div className="max-w-md mx-auto text-center">
         <h1 className="text-3xl font-bold tracking-tight">
           Payment Cancelled

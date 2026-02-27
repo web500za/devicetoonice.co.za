@@ -47,6 +47,62 @@
 
 :root {
   --radius: 0.625rem;
+  --background: #000000;
+  --foreground: #f5f5f5;
+  --card: #0a0a0a;
+  --card-foreground: #f5f5f5;
+  --popover: #0a0a0a;
+  --popover-foreground: #f5f5f5;
+  --primary: #ffffff;
+  --primary-foreground: #000000;
+  --secondary: #111111;
+  --secondary-foreground: #f5f5f5;
+  --muted: #111111;
+  --muted-foreground: #a3a3a3;
+  --accent: #111111;
+  --accent-foreground: #f5f5f5;
+  --destructive: #ef4444;
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.1);
+  --ring: rgba(255, 255, 255, 0.2);
+  --cta: #e31937;
+  --cta-foreground: #ffffff;
+  --chart-1: #ffffff;
+  --chart-2: #a3a3a3;
+  --chart-3: #737373;
+  --chart-4: #404040;
+  --chart-5: #1a1a1a;
+  --sidebar: #0a0a0a;
+  --sidebar-foreground: #f5f5f5;
+  --sidebar-primary: #ffffff;
+  --sidebar-primary-foreground: #000000;
+  --sidebar-accent: #111111;
+  --sidebar-accent-foreground: #f5f5f5;
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+  --sidebar-ring: rgba(255, 255, 255, 0.2);
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  overflow-x: hidden;
+  background: #000000;
+  color: #f5f5f5;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.light-theme {
   --background: #ffffff;
   --foreground: #0a0a0a;
   --card: #fafafa;
@@ -61,42 +117,18 @@
   --muted-foreground: #737373;
   --accent: #f5f5f5;
   --accent-foreground: #0a0a0a;
-  --destructive: #ef4444;
   --border: #e5e5e5;
   --input: #e5e5e5;
   --ring: #0a0a0a;
-  --cta: #e31937;
-  --cta-foreground: #ffffff;
-  --chart-1: #0a0a0a;
-  --chart-2: #737373;
-  --chart-3: #a3a3a3;
-  --chart-4: #d4d4d4;
-  --chart-5: #f5f5f5;
-  --sidebar: #fafafa;
-  --sidebar-foreground: #0a0a0a;
-  --sidebar-primary: #0a0a0a;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #f5f5f5;
-  --sidebar-accent-foreground: #0a0a0a;
-  --sidebar-border: #e5e5e5;
-  --sidebar-ring: #0a0a0a;
 }
 
-html {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  scroll-behavior: smooth;
-}
-
-body {
-  overflow-x: hidden;
-}
-
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

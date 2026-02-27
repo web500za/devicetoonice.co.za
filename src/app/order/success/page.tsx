@@ -6,7 +6,7 @@ import Link from "next/link";
 
 function SuccessContent() {
   return (
-    <div className="min-h-screen flex items-center justify-center px-6">
+    <div className="light-theme min-h-screen flex items-center justify-center px-6 bg-white">
       <div className="max-w-md mx-auto text-center">
         <div className="w-16 h-16 rounded-full bg-foreground text-background flex items-center justify-center mx-auto mb-8">
           <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
