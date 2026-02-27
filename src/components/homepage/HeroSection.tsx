@@ -102,6 +102,15 @@ export function HeroSection({ stock }: { stock: StockData }) {
           </motion.h1>
 
           <motion.p
+            className="mt-1 text-sm text-white/30 uppercase tracking-[0.3em] sm:text-base"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
+            South Africa
+          </motion.p>
+
+          <motion.p
             className="mt-4 text-xl text-white/80 sm:text-2xl font-medium tracking-tight"
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
