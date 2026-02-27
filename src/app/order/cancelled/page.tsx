@@ -1,26 +1,28 @@
 "use client";
 
 import { Suspense } from "react";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 function CancelledContent() {
   return (
-    <div className="light-theme min-h-screen flex items-center justify-center px-6 bg-white">
+    <div className="min-h-screen flex items-center justify-center px-6 bg-black">
       <div className="max-w-md mx-auto text-center">
-        <h1 className="text-3xl font-bold tracking-tight">
+        <h1 className="text-3xl font-bold tracking-tight text-white">
           Payment Cancelled
         </h1>
-        <p className="text-muted-foreground mt-4 leading-relaxed">
+        <p className="text-white/40 mt-4 leading-relaxed text-sm">
           No charges have been made. Your configuration is still available.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
-          <Button asChild size="lg" className="rounded-full px-8 h-12">
-            <Link href="/checkout">Try Again</Link>
-          </Button>
+          <Link
+            href="/checkout"
+            className="inline-flex items-center justify-center rounded-full h-12 px-8 text-sm font-medium bg-[#e31937] text-white hover:bg-[#c91530] transition-colors"
+          >
+            Try Again
+          </Link>
           <Link
             href="/"
-            className="text-muted-foreground hover:text-foreground transition-colors text-sm"
+            className="text-white/40 hover:text-white transition-colors text-sm"
           >
             Back to Home
           </Link>
@@ -34,8 +36,8 @@ export default function OrderCancelledPage() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen flex items-center justify-center">
-          <p className="text-muted-foreground text-sm">Loading...</p>
+        <div className="min-h-screen flex items-center justify-center bg-black">
+          <div className="w-8 h-8 rounded-full border-2 border-white/10 border-t-white/60 animate-spin" />
         </div>
       }
     >

@@ -89,7 +89,7 @@ export function HeroSection({ stock }: { stock: StockData }) {
       >
         <div className="text-center">
           <motion.h1
-            className="text-5xl font-bold tracking-tighter text-white sm:text-6xl md:text-7xl lg:text-8xl"
+            className="text-6xl font-bold tracking-tighter text-white sm:text-7xl md:text-8xl lg:text-9xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -102,7 +102,7 @@ export function HeroSection({ stock }: { stock: StockData }) {
           </motion.h1>
 
           <motion.p
-            className="mt-3 text-lg text-white/80 sm:text-xl font-medium tracking-tight"
+            className="mt-4 text-xl text-white/80 sm:text-2xl font-medium tracking-tight"
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -111,7 +111,7 @@ export function HeroSection({ stock }: { stock: StockData }) {
           </motion.p>
 
           <motion.p
-            className="mt-2 text-xs text-white/40 tracking-wide sm:text-sm"
+            className="mt-2 text-sm text-white/40 tracking-wide sm:text-base"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.55 }}

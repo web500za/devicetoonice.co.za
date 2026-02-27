@@ -69,6 +69,18 @@ export async function POST(request: Request) {
 
     const baseUrl = (process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000").trim();
 
+    // Build success URL with order details for display on confirmation page
+    const successParams = new URLSearchParams({
+      product: product.name,
+      ram,
+      storage,
+      color: colorInfo.name,
+      price: String(variant.price),
+      name: `${customer.firstName} ${customer.lastName}`,
+      city: customer.city,
+      province: customer.province,
+    });
+
     // Create Yoco checkout session
     const yocoResponse = await fetch("https://payments.yoco.com/api/checkouts", {
       method: "POST",
@@ -79,7 +91,7 @@ export async function POST(request: Request) {
       body: JSON.stringify({
         amount: amountInCents,
         currency: "ZAR",
-        successUrl: `${baseUrl}/order/success?product=${product.slug}`,
+        successUrl: `${baseUrl}/order/success?${successParams.toString()}`,
         cancelUrl: `${baseUrl}/order/cancelled?product=${product.slug}`,
         metadata: {
           product: product.name,

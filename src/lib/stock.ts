@@ -2,15 +2,45 @@ import { supabaseAdmin, supabase } from "./supabase";
 
 const PRODUCT_ID = "oneplus15";
 
-export async function getStock() {
-  const { data, error } = await supabase
-    .from("stock")
-    .select("remaining, total")
-    .eq("id", PRODUCT_ID)
-    .single();
+// In-memory cache for stock data (short TTL to survive brief Supabase outages)
+let stockCache: { remaining: number; total: number; timestamp: number } | null = null;
+const CACHE_TTL_MS = 60_000; // 60 seconds
 
-  if (error || !data) return { remaining: 0, total: 0 };
-  return { remaining: data.remaining, total: data.total };
+async function fetchStockWithRetry(retries = 2, delayMs = 500) {
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    const { data, error } = await supabase
+      .from("stock")
+      .select("remaining, total")
+      .eq("id", PRODUCT_ID)
+      .single();
+
+    if (!error && data) {
+      // Update cache on success
+      stockCache = { remaining: data.remaining, total: data.total, timestamp: Date.now() };
+      return { remaining: data.remaining, total: data.total };
+    }
+
+    if (attempt < retries) {
+      console.warn(`Stock fetch attempt ${attempt + 1} failed, retrying in ${delayMs}ms...`);
+      await new Promise((r) => setTimeout(r, delayMs));
+    } else {
+      console.error("Stock fetch failed after all retries:", error);
+    }
+  }
+
+  // All retries failed — use cached value if fresh enough
+  if (stockCache && Date.now() - stockCache.timestamp < CACHE_TTL_MS) {
+    console.warn("Using cached stock data (Supabase unreachable)");
+    return { remaining: stockCache.remaining, total: stockCache.total };
+  }
+
+  // No cache or cache too old — default to sold out (safe fallback)
+  console.error("No cached stock available — defaulting to sold out");
+  return { remaining: 0, total: 0 };
+}
+
+export async function getStock() {
+  return fetchStockWithRetry();
 }
 
 /**

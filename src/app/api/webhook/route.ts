@@ -1,8 +1,68 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { createHmac, timingSafeEqual } from "crypto";
 import { decrementStock } from "@/lib/stock";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
+
+function verifyWebhookSignature(
+  body: string,
+  headers: Headers
+): boolean {
+  const secret = process.env.YOCO_WEBHOOK_SECRET;
+  if (!secret) {
+    console.warn("YOCO_WEBHOOK_SECRET not set — skipping signature verification");
+    return true;
+  }
+
+  const webhookId = headers.get("webhook-id");
+  const webhookTimestamp = headers.get("webhook-timestamp");
+  const webhookSignature = headers.get("webhook-signature");
+
+  if (!webhookId || !webhookTimestamp || !webhookSignature) {
+    console.error("Webhook: missing signature headers");
+    return false;
+  }
+
+  // Reject timestamps older than 3 minutes (replay protection)
+  const timestampSeconds = parseInt(webhookTimestamp, 10);
+  const now = Math.floor(Date.now() / 1000);
+  if (Math.abs(now - timestampSeconds) > 180) {
+    console.error("Webhook: timestamp too old, possible replay attack");
+    return false;
+  }
+
+  // Secret format: "whsec_<base64>" — strip prefix and decode
+  const secretBytes = Buffer.from(
+    secret.startsWith("whsec_") ? secret.slice(6) : secret,
+    "base64"
+  );
+
+  // Signed content: "{webhook-id}.{webhook-timestamp}.{body}"
+  const signedContent = `${webhookId}.${webhookTimestamp}.${body}`;
+  const expectedSignature = createHmac("sha256", secretBytes)
+    .update(signedContent)
+    .digest("base64");
+
+  // webhook-signature header may contain multiple signatures: "v1,<sig1> v1,<sig2>"
+  const signatures = webhookSignature.split(" ");
+  for (const versionedSig of signatures) {
+    const [, sig] = versionedSig.split(",");
+    if (!sig) continue;
+    try {
+      const expected = Buffer.from(expectedSignature, "base64");
+      const received = Buffer.from(sig, "base64");
+      if (expected.length === received.length && timingSafeEqual(expected, received)) {
+        return true;
+      }
+    } catch {
+      continue;
+    }
+  }
+
+  console.error("Webhook: signature verification failed");
+  return false;
+}
 
 function buildConfirmationEmail(metadata: Record<string, string>, paymentId: string, amount: number) {
   const formattedAmount = `R${(amount / 100).toLocaleString("en-ZA")}`;
@@ -76,14 +136,34 @@ function buildConfirmationEmail(metadata: Record<string, string>, paymentId: str
         </td></tr>
 
         <!-- Reference -->
-        <tr><td style="padding:10px 40px 30px;">
+        <tr><td style="padding:10px 40px 20px;">
           <p style="margin:0;font-size:12px;color:#6e6e73;text-align:center;">
             Payment Reference: ${paymentId}
           </p>
         </td></tr>
 
+        <!-- What Happens Next -->
+        <tr><td style="padding:10px 40px 20px;">
+          <table width="100%" cellpadding="0" cellspacing="0" style="background-color:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:24px;">
+            <tr><td>
+              <h3 style="margin:0 0 16px;font-size:14px;font-weight:600;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.1em;">What Happens Next</h3>
+              <table width="100%" cellpadding="0" cellspacing="0">
+                <tr><td style="padding:6px 0;font-size:14px;color:#86868b;">1. We order your phone from our supplier</td></tr>
+                <tr><td style="padding:6px 0;font-size:14px;color:#86868b;">2. We&rsquo;ll email you with shipping updates</td></tr>
+                <tr><td style="padding:6px 0;font-size:14px;color:#86868b;">3. Delivered to your door in 7&ndash;10 working days</td></tr>
+              </table>
+            </td></tr>
+          </table>
+        </td></tr>
+
         <!-- Footer -->
         <tr><td style="padding:20px 40px;border-top:1px solid rgba(255,255,255,0.1);text-align:center;">
+          <p style="margin:0 0 12px;font-size:12px;color:#6e6e73;">
+            Questions about your order?<br>
+            <a href="mailto:web500za@gmail.com" style="color:#e31937;text-decoration:none;">web500za@gmail.com</a>
+            &nbsp;&middot;&nbsp;
+            <a href="https://wa.me/27832540891" style="color:#e31937;text-decoration:none;">WhatsApp</a>
+          </p>
           <p style="margin:0;font-size:12px;color:#6e6e73;">
             &copy; ${new Date().getFullYear()} Device Too Nice. All rights reserved.<br>
             Free delivery &amp; customs included. No hidden fees.
@@ -99,7 +179,13 @@ function buildConfirmationEmail(metadata: Record<string, string>, paymentId: str
 
 export async function POST(request: Request) {
   try {
-    const body = await request.json();
+    const rawBody = await request.text();
+
+    if (!verifyWebhookSignature(rawBody, request.headers)) {
+      return NextResponse.json({ error: "Invalid signature" }, { status: 401 });
+    }
+
+    const body = JSON.parse(rawBody);
 
     if (body.type !== "payment.succeeded") {
       return NextResponse.json({ received: true });
