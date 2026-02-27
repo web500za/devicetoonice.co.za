@@ -54,3 +54,8 @@ export interface CheckoutRequest {
 export interface CheckoutResponse {
   redirectUrl: string;
 }
+
+export interface StockData {
+  remaining: number;
+  total: number;
+}

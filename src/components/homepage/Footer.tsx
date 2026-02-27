@@ -1,11 +1,10 @@
 import Link from "next/link";
 
-export function Footer() {
+export function Footer({ isSoldOut }: { isSoldOut: boolean }) {
   return (
     <footer className="border-t border-white/[0.06] px-6 py-16 bg-[#050505]">
       <div className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12">
-          {/* Left column */}
           <div>
             <p className="text-sm font-semibold text-white tracking-tight">
               Device Too Nice
@@ -15,7 +14,6 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Right column */}
           <div className="md:text-right">
             <p className="text-xs uppercase tracking-[0.2em] text-white/30 font-medium mb-3">
               Shop
@@ -27,17 +25,20 @@ export function Footer() {
               >
                 OnePlus 15
               </Link>
-              <Link
-                href="/checkout"
-                className="text-sm text-white/50 hover:text-white transition-colors"
-              >
-                Checkout
-              </Link>
+              {isSoldOut ? (
+                <span className="text-sm text-white/25">Sold Out</span>
+              ) : (
+                <Link
+                  href="/checkout"
+                  className="text-sm text-white/50 hover:text-white transition-colors"
+                >
+                  Checkout
+                </Link>
+              )}
             </nav>
           </div>
         </div>
 
-        {/* Copyright */}
         <div className="mt-12 pt-8 border-t border-white/[0.06]">
           <p className="text-xs text-white/25 text-center">
             &copy; 2026 Device Too Nice. Free delivery &amp; customs included.

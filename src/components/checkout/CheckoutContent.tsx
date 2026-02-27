@@ -3,8 +3,10 @@
 import { useState } from "react";
 import { getProduct, findVariant, findColor, formatPrice } from "@/lib/products";
 import type { CheckoutFormData } from "@/lib/types";
+import type { StockData } from "@/lib/types";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { AddressAutocomplete } from "@/components/checkout/AddressAutocomplete";
 import {
   Select,
   SelectContent,
@@ -15,6 +17,7 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
+import { WaitlistForm } from "@/components/ui/waitlist-form";
 import Link from "next/link";
 
 const SA_PROVINCES = [
@@ -56,8 +59,10 @@ function validateForm(form: CheckoutFormData): Record<string, string> {
   return errors;
 }
 
-export default function CheckoutContent() {
+export default function CheckoutContent({ stock }: { stock: StockData }) {
   const product = getProduct("oneplus15");
+  const isSoldOut = stock.remaining <= 0;
+
   if (!product) {
     return (
       <div className="min-h-screen flex items-center justify-center px-6">
@@ -70,6 +75,30 @@ export default function CheckoutContent() {
       </div>
     );
   }
+
+  if (isSoldOut) {
+    return (
+      <div className="light-theme min-h-screen bg-white">
+        <header className="border-b border-border">
+          <div className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
+            <Link href="/" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
+              &larr; Back
+            </Link>
+            <span className="text-sm font-semibold tracking-tight">Checkout</span>
+            <div className="w-10" />
+          </div>
+        </header>
+        <div className="flex flex-col items-center justify-center px-6 py-24">
+          <h2 className="text-2xl font-bold tracking-tight mb-2">Sold Out</h2>
+          <p className="text-muted-foreground text-sm mb-8 text-center max-w-md">
+            This month&apos;s allocation has sold out. Join the waitlist and we&apos;ll email you when new stock is available.
+          </p>
+          <WaitlistForm variant="light" />
+        </div>
+      </div>
+    );
+  }
+
   return <CheckoutForm product={product} />;
 }
 
@@ -146,6 +175,9 @@ function CheckoutForm({
       });
       if (!res.ok) {
         const data = await res.json();
+        if (data.error === "SOLD_OUT") {
+          throw new Error("This item just sold out. Please join the waitlist on the homepage.");
+        }
         throw new Error(data.error || "Something went wrong");
       }
       const { redirectUrl } = await res.json();
@@ -271,15 +303,6 @@ function CheckoutForm({
                   </div>
                 </div>
 
-                {/* Product image */}
-                <div className="flex justify-center py-4">
-                  <img
-                    src={activeColor.image}
-                    alt={`${product.name} ${activeColor.name}`}
-                    className="w-32 md:w-40"
-                    loading="lazy"
-                  />
-                </div>
               </section>
 
               <Separator />
@@ -339,10 +362,27 @@ function CheckoutForm({
 
                 <div className="mb-4">
                   <Label className="text-xs text-muted-foreground mb-1.5 block">Street address</Label>
-                  <Input
-                    placeholder="123 Main Street, Apt 4"
+                  <AddressAutocomplete
+                    placeholder="Start typing your address..."
                     value={form.streetAddress}
-                    onChange={(e) => update("streetAddress", e.target.value)}
+                    onChange={(v) => update("streetAddress", v)}
+                    onPlaceSelect={(place) => {
+                      setForm((prev) => ({
+                        ...prev,
+                        streetAddress: place.streetAddress,
+                        city: place.city || prev.city,
+                        province: place.province || prev.province,
+                        postalCode: place.postalCode || prev.postalCode,
+                      }));
+                      setErrors((prev) => {
+                        const next = { ...prev };
+                        delete next.streetAddress;
+                        if (place.city) delete next.city;
+                        if (place.province) delete next.province;
+                        if (place.postalCode) delete next.postalCode;
+                        return next;
+                      });
+                    }}
                     className={errors.streetAddress ? "border-destructive" : ""}
                   />
                   <FieldError field="streetAddress" />

@@ -103,6 +103,8 @@ body {
 }
 
 .light-theme {
+  color: var(--foreground);
+  background: var(--background);
   --background: #ffffff;
   --foreground: #0a0a0a;
   --card: #fafafa;

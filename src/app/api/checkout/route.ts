@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getProduct, findVariant, findColor } from "@/lib/products";
+import { getStock } from "@/lib/stock";
 import type { CheckoutRequest } from "@/lib/types";
 
 
@@ -7,6 +8,20 @@ export async function POST(request: Request) {
   try {
     const body: CheckoutRequest = await request.json();
     const { productSlug, ram, storage, color, amountInCents, customer } = body;
+
+    // Advisory stock check — prevent starting checkout when clearly sold out
+    try {
+      const { remaining } = await getStock();
+      if (remaining <= 0) {
+        return NextResponse.json(
+          { error: "SOLD_OUT" },
+          { status: 409 }
+        );
+      }
+    } catch {
+      // If Supabase is unreachable, allow checkout to proceed
+      console.error("Stock check failed — allowing checkout to proceed");
+    }
 
     // Look up product
     const product = getProduct(productSlug);

@@ -5,13 +5,17 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { StockIndicator } from "@/components/ui/stock-indicator";
+import { WaitlistForm } from "@/components/ui/waitlist-form";
 import { useLenis } from "@/components/providers/LenisProvider";
+import type { StockData } from "@/lib/types";
 
-export function HeroSection() {
+export function HeroSection({ stock }: { stock: StockData }) {
   const [scrollY, setScrollY] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
   const prefersReduced = useReducedMotion();
   const lenis = useLenis();
+  const isSoldOut = stock.remaining <= 0;
 
   useEffect(() => {
     if (prefersReduced) return;
@@ -54,7 +58,6 @@ export function HeroSection() {
       ref={sectionRef}
       className="relative h-dvh overflow-hidden bg-black"
     >
-      {/* Full-bleed hero — Infinite Black camera macro on pure black */}
       <motion.div
         className="absolute inset-0"
         initial={{ opacity: 0 }}
@@ -73,11 +76,9 @@ export function HeroSection() {
           className="object-cover object-[50%_45%]"
           sizes="100vw"
         />
-        {/* Subtle gradient to ensure text area is clean */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black/85" />
       </motion.div>
 
-      {/* Content — positioned in upper third */}
       <div
         className="relative z-10 flex h-full flex-col items-center justify-start pt-[14vh] sm:pt-[16vh] px-6"
         style={{
@@ -97,52 +98,66 @@ export function HeroSection() {
               ease: [0.25, 0.1, 0.25, 1],
             }}
           >
-            OnePlus 15
+            OnePlus <span className="text-[var(--cta)]">1</span>5
           </motion.h1>
 
           <motion.p
-            className="mt-3 text-base text-white/50 sm:text-lg"
+            className="mt-3 text-lg text-white/80 sm:text-xl font-medium tracking-tight"
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Power On. Limits Off.
+            R15,000 · Delivered to your door
+          </motion.p>
+
+          <motion.p
+            className="mt-2 text-xs text-white/40 tracking-wide sm:text-sm"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.55 }}
+          >
+            Free delivery · No customs · 7–10 working days
           </motion.p>
 
           <motion.div
-            className="mt-6 flex justify-center gap-4"
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            <Button
-              asChild
-              className="h-11 rounded-full bg-[var(--cta)] px-8 text-sm font-medium text-white hover:bg-[var(--cta)]/90"
-            >
-              <Link href="/checkout">Order Now</Link>
-            </Button>
-
-            <Button
-              variant="ghost"
-              onClick={handleLearnMore}
-              className="h-11 rounded-full border border-white/20 px-8 text-sm text-white/70 hover:border-white/40 hover:bg-transparent hover:text-white"
-            >
-              Learn more
-            </Button>
-          </motion.div>
-
-          <motion.p
-            className="mt-4 text-xs text-white/30"
+            className="mt-2"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
           >
-            From R15,000
-          </motion.p>
+            <StockIndicator remaining={stock.remaining} total={stock.total} />
+          </motion.div>
+
+          <motion.div
+            className="mt-6 flex flex-col items-center gap-4"
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+          >
+            {isSoldOut ? (
+              <WaitlistForm variant="dark" />
+            ) : (
+              <div className="flex justify-center gap-4">
+                <Button
+                  asChild
+                  className="h-11 rounded-full bg-[var(--cta)] px-8 text-sm font-medium text-white hover:bg-[var(--cta)]/90"
+                >
+                  <Link href="/checkout">Order Now</Link>
+                </Button>
+
+                <Button
+                  variant="ghost"
+                  onClick={handleLearnMore}
+                  className="h-11 rounded-full border border-white/20 px-8 text-sm text-white/70 hover:border-white/40 hover:bg-transparent hover:text-white"
+                >
+                  Learn more
+                </Button>
+              </div>
+            )}
+          </motion.div>
         </div>
       </div>
 
-      {/* Scroll hint */}
       <motion.div
         className="absolute bottom-6 left-1/2 z-20 -translate-x-1/2"
         initial={{ opacity: 0 }}

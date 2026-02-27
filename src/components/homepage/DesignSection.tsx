@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
@@ -32,28 +31,6 @@ export function DesignSection({ colors }: DesignSectionProps) {
 
   return (
     <section className="relative overflow-hidden bg-black">
-      {/* Cinematic background — golden sphere design */}
-      <div className="absolute inset-0">
-        <Image
-          src="/images/oneplus-15/cdn/backgrounds/section-bg-4.jpg"
-          alt=""
-          fill
-          className="object-cover object-center opacity-20"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
-      </div>
-
-      {/* Detail close-up — subtle bezel shot bottom right */}
-      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] pointer-events-none hidden lg:block">
-        <Image
-          src="/images/oneplus-15/detail/detail-014.jpg"
-          alt=""
-          fill
-          className="object-cover opacity-10 rounded-tl-[80px]"
-          sizes="400px"
-        />
-      </div>
 
       <div className="relative py-32 sm:py-40 px-6 max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 gap-16 items-center">

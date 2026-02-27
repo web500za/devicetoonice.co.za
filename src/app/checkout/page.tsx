@@ -1,5 +1,8 @@
 import { Suspense } from "react";
+import { getStock } from "@/lib/stock";
 import CheckoutContent from "@/components/checkout/CheckoutContent";
+
+export const dynamic = "force-dynamic";
 
 export const metadata = {
   title: "Checkout — Device Too Nice",
@@ -16,10 +19,12 @@ function CheckoutLoading() {
   );
 }
 
-export default function CheckoutPage() {
+export default async function CheckoutPage() {
+  const stock = await getStock();
+
   return (
     <Suspense fallback={<CheckoutLoading />}>
-      <CheckoutContent />
+      <CheckoutContent stock={stock} />
     </Suspense>
   );
 }

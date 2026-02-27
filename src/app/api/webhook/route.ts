@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { decrementStock } from "@/lib/stock";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -109,6 +110,18 @@ export async function POST(request: Request) {
     if (!metadata?.email) {
       console.error("Webhook: no email in metadata");
       return NextResponse.json({ received: true });
+    }
+
+    // Decrement stock atomically
+    try {
+      const newRemaining = await decrementStock();
+      if (newRemaining === null) {
+        console.error("OVERSELL DETECTED — stock was already 0. Payment:", paymentId);
+      } else {
+        console.log(`Stock decremented to ${newRemaining} for payment ${paymentId}`);
+      }
+    } catch (error) {
+      console.error("Stock decrement failed:", error, "Payment:", paymentId);
     }
 
     const html = buildConfirmationEmail(metadata, paymentId, amount);

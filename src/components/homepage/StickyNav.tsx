@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
-export function StickyNav() {
+export function StickyNav({ isSoldOut }: { isSoldOut: boolean }) {
   const [hidden, setHidden] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const prefersReduced = useReducedMotion();
@@ -15,13 +15,10 @@ export function StickyNav() {
       const currentY = window.scrollY;
 
       if (currentY <= 100) {
-        // Always show when near top
         setHidden(false);
       } else if (currentY > lastScrollY) {
-        // Scrolling down
         setHidden(true);
       } else {
-        // Scrolling up
         setHidden(false);
       }
 
@@ -46,11 +43,21 @@ export function StickyNav() {
           Device Too Nice
         </Link>
 
-        <Button variant="ghost" size="sm" asChild>
-          <Link href="/checkout" className="text-white">
-            Buy
-          </Link>
-        </Button>
+        {isSoldOut ? (
+          <Button
+            size="sm"
+            disabled
+            className="bg-white/10 text-white/40 rounded-full px-5 cursor-not-allowed"
+          >
+            Sold Out
+          </Button>
+        ) : (
+          <Button size="sm" asChild className="bg-[var(--cta)] hover:bg-[var(--cta)]/90 text-white rounded-full px-5">
+            <Link href="/checkout">
+              Buy
+            </Link>
+          </Button>
+        )}
       </div>
     </motion.nav>
   );
