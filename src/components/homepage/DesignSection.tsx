@@ -32,18 +32,18 @@ export function DesignSection({ colors }: DesignSectionProps) {
   return (
     <section className="relative overflow-hidden bg-black">
 
-      <div className="relative py-32 sm:py-40 px-6 max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
+      <div className="relative py-16 sm:py-32 md:py-40 px-6 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-6 sm:gap-16 items-center">
           {/* Right column — image (after text on mobile, right on desktop) */}
           <div className="order-last md:order-2">
             <ScrollReveal y={0} delay={0.2}>
-              <div className="relative flex items-center justify-center min-h-[300px] sm:min-h-[500px]">
+              <div className="relative flex items-center justify-center min-h-[220px] sm:min-h-[500px]">
                 <AnimatePresence mode="wait">
                   <motion.img
                     key={activeColor.key}
                     src={activeColor.image}
                     alt={`OnePlus 15 — ${activeColor.name}`}
-                    className="max-h-[500px] sm:max-h-[600px] object-contain mx-auto drop-shadow-[0_0_80px_rgba(255,255,255,0.06)]"
+                    className="max-h-[380px] sm:max-h-[600px] object-contain mx-auto drop-shadow-[0_0_80px_rgba(255,255,255,0.06)]"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
@@ -71,7 +71,7 @@ export function DesignSection({ colors }: DesignSectionProps) {
               </p>
 
               {/* Stats row */}
-              <div className="mt-10 flex gap-8">
+              <div className="mt-10 flex gap-4 sm:gap-8">
                 {buildStats.map((stat) => (
                   <div key={stat.label}>
                     <p className="text-xl sm:text-2xl font-bold text-white">

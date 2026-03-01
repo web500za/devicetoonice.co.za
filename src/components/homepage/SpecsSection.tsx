@@ -64,7 +64,7 @@ export function SpecsSection({ specCategories }: SpecsSectionProps) {
   }
 
   return (
-    <section className="py-24 sm:py-32 px-6 bg-black">
+    <section className="py-16 sm:py-24 md:py-32 px-6 bg-black">
       <div className="max-w-4xl mx-auto">
         <div className="flex justify-between items-center">
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">

@@ -50,7 +50,7 @@ export function CameraSection() {
         <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-[#050505]/70 to-[#050505]" />
       </div>
 
-      <div className="relative py-32 sm:py-40 px-6 max-w-5xl mx-auto">
+      <div className="relative py-16 sm:py-32 md:py-40 px-6 max-w-5xl mx-auto">
         <ScrollReveal className="text-center">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white">
             Every Shot. A Masterpiece.
@@ -83,11 +83,16 @@ export function CameraSection() {
           </p>
         </ScrollReveal>
 
-        {/* Camera spec cards — horizontal scroll on mobile, 3-col grid on desktop */}
-        <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 md:grid md:grid-cols-3 md:overflow-visible md:snap-none sm:gap-6 mt-14 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+        {/* Mobile camera summary */}
+        <p className="md:hidden text-sm text-white/40 mt-6 text-center">
+          50MP Main · 50MP Telephoto · 50MP Ultra-Wide
+        </p>
+
+        {/* Camera spec cards — hidden on mobile, 3-col grid on desktop */}
+        <div className="hidden md:grid md:grid-cols-3 gap-6 mt-14">
           {cameras.map((camera) => (
             <ScrollReveal key={camera.title} delay={camera.delay}>
-              <div className="min-w-[280px] snap-center md:min-w-0 bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6 sm:p-8 relative overflow-hidden backdrop-blur-sm before:absolute before:top-0 before:left-0 before:right-0 before:h-[2px] before:bg-[var(--cta)]">
+              <div className="bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6 sm:p-8 relative overflow-hidden backdrop-blur-sm before:absolute before:top-0 before:left-0 before:right-0 before:h-[2px] before:bg-[var(--cta)]">
                 <p className="text-xs uppercase tracking-[0.2em] text-[var(--cta)] font-medium">
                   {camera.title}
                 </p>

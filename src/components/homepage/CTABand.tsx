@@ -11,7 +11,7 @@ export function CTABand({ stock }: { stock: StockData }) {
   const isSoldOut = stock.remaining <= 0;
 
   return (
-    <section className="py-32 sm:py-40 px-6 text-center bg-black">
+    <section className="py-16 sm:py-32 md:py-40 px-6 text-center bg-black">
       <div className="max-w-2xl mx-auto">
         <ScrollReveal>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tighter text-white">

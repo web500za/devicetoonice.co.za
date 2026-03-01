@@ -42,7 +42,7 @@ export function BatterySection() {
         />
       </div>
 
-      <div className="relative py-32 sm:py-40 px-6 max-w-4xl mx-auto text-center">
+      <div className="relative py-16 sm:py-32 md:py-40 px-6 max-w-4xl mx-auto text-center">
         {/* Headline */}
         <ScrollReveal>
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
@@ -72,7 +72,7 @@ export function BatterySection() {
         </ScrollReveal>
 
         {/* Charging stats row */}
-        <div className="mt-16 flex justify-center gap-8 sm:gap-16">
+        <div className="mt-10 sm:mt-16 flex justify-center gap-6 sm:gap-8 md:gap-16">
           {chargingStats.map((stat) => (
             <ScrollReveal key={stat.label} delay={stat.delay}>
               <div>
@@ -85,9 +85,14 @@ export function BatterySection() {
           ))}
         </div>
 
-        {/* Bullet points */}
+        {/* Compact mobile summary */}
+        <p className="sm:hidden text-sm text-white/60 mt-8 text-center">
+          3 day battery · Charger in the box
+        </p>
+
+        {/* Bullet points — hidden on mobile */}
         <ScrollReveal delay={0.6}>
-          <div className="mt-12 flex flex-col items-center gap-3">
+          <div className="mt-12 hidden sm:flex flex-col items-center gap-3">
             {bullets.map((text) => (
               <p key={text} className="text-sm text-white/60 flex items-center">
                 <span

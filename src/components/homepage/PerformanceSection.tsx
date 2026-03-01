@@ -46,7 +46,7 @@ export function PerformanceSection() {
         className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(ellipse_at_center,rgba(227,25,55,0.08)_0%,transparent_70%)]"
       />
 
-      <div className="relative py-32 sm:py-40 px-6 max-w-4xl mx-auto text-center">
+      <div className="relative py-16 sm:py-32 md:py-40 px-6 max-w-4xl mx-auto text-center">
         {/* Label */}
         <ScrollReveal>
           <p className="text-xs uppercase tracking-[0.3em] text-[var(--cta)] font-medium mb-8">
@@ -54,8 +54,15 @@ export function PerformanceSection() {
           </p>
         </ScrollReveal>
 
-        {/* Massive headline — staggered word reveal */}
-        <div className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white leading-[0.95]">
+        {/* Mobile headline — single inline line */}
+        <ScrollReveal className="sm:hidden">
+          <div className="text-5xl font-bold tracking-tighter text-white leading-[0.95]">
+            Raw. Unmatched. Power.
+          </div>
+        </ScrollReveal>
+
+        {/* Desktop headline — staggered word reveal */}
+        <div className="hidden sm:block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white leading-[0.95]">
           {words.map((word, i) => (
             <ScrollReveal key={word} delay={i * 0.15} y={30}>
               <span className="block">{word}</span>
@@ -64,7 +71,7 @@ export function PerformanceSection() {
         </div>
 
         {/* Stats row */}
-        <div className="mt-16 flex justify-center gap-6 sm:gap-12 md:gap-16">
+        <div className="mt-10 sm:mt-16 flex justify-center gap-6 sm:gap-12 md:gap-16">
           {stats.map((stat, i) => (
             <ScrollReveal key={stat.label} delay={0.4 + i * 0.1}>
               <div>
@@ -82,9 +89,9 @@ export function PerformanceSection() {
           ))}
         </div>
 
-        {/* Tag pills */}
+        {/* Tag pills — hidden on mobile (info repeated in Specs) */}
         <ScrollReveal delay={0.7}>
-          <div className="mt-12 flex justify-center gap-3 overflow-x-auto flex-nowrap [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+          <div className="mt-12 hidden sm:flex justify-center gap-3 overflow-x-auto flex-nowrap [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {pills.map((pill) => (
               <span
                 key={pill}

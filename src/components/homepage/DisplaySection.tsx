@@ -72,7 +72,7 @@ export function DisplaySection() {
         </div>
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,rgba(0,0,0,0.8)_100%)] pointer-events-none" />
 
-        <div className="relative py-24 px-6 text-center">
+        <div className="relative py-16 sm:py-24 px-6 text-center">
           <h2 className="text-3xl font-bold tracking-tight text-white">
             6.78&quot; of pure clarity
           </h2>
