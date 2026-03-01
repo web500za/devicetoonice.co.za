@@ -105,9 +105,11 @@ function CheckoutForm({
 }: {
   product: NonNullable<ReturnType<typeof getProduct>>;
 }) {
-  const [selectedRam, setSelectedRam] = useState(product.ramOptions[0]);
-  const [selectedStorage, setSelectedStorage] = useState(product.storageOptions[0]);
-  const [selectedColorKey, setSelectedColorKey] = useState(product.colors[0].key);
+  // Default to violet — find the cheapest variant that carries it
+  const defaultVariant = product.variants.find((v) => v.colors.includes("violet")) ?? product.variants[0];
+  const [selectedRam, setSelectedRam] = useState(defaultVariant.ram);
+  const [selectedStorage, setSelectedStorage] = useState(defaultVariant.storage);
+  const [selectedColorKey, setSelectedColorKey] = useState("violet");
 
   const availableStorage = product.storageOptions.filter(
     (s) => findVariant(product, selectedRam, s) !== undefined
@@ -116,13 +118,18 @@ function CheckoutForm({
     ? selectedStorage
     : availableStorage[0];
   const effectiveVariant = findVariant(product, selectedRam, effectiveStorage)!;
-  const availableColors = effectiveVariant.colors.map(
-    (key) => findColor(product, key)!
-  );
   const activeColorKey = effectiveVariant.colors.includes(selectedColorKey)
     ? selectedColorKey
     : effectiveVariant.colors[0];
   const activeColor = findColor(product, activeColorKey)!;
+
+  // Color-compatibility helpers for greying out incompatible configs
+  const ramHasColor = (ram: string) =>
+    product.variants.some((v) => v.ram === ram && v.colors.includes(activeColorKey));
+  const storageHasColor = (storage: string) => {
+    const v = findVariant(product, selectedRam, storage);
+    return v !== undefined && v.colors.includes(activeColorKey);
+  };
 
   const [form, setForm] = useState<CheckoutFormData>({
     firstName: "",
@@ -222,28 +229,33 @@ function CheckoutForm({
                     Memory
                   </Label>
                   <div className="flex flex-wrap gap-2">
-                    {product.ramOptions.map((ram) => (
-                      <button
-                        key={ram}
-                        type="button"
-                        onClick={() => {
-                          setSelectedRam(ram);
-                          if (!findVariant(product, ram, selectedStorage)) {
-                            const first = product.storageOptions.find(
-                              (s) => findVariant(product, ram, s) !== undefined
-                            );
-                            if (first) setSelectedStorage(first);
-                          }
-                        }}
-                        className={`px-4 py-2 rounded-lg text-sm font-medium border transition-colors cursor-pointer ${
-                          selectedRam === ram
-                            ? "border-foreground bg-foreground text-background"
-                            : "border-border text-muted-foreground hover:border-foreground/30"
-                        }`}
-                      >
-                        {ram}
-                      </button>
-                    ))}
+                    {product.ramOptions.map((ram) => {
+                      const hasColor = ramHasColor(ram);
+                      return (
+                        <button
+                          key={ram}
+                          type="button"
+                          onClick={() => {
+                            setSelectedRam(ram);
+                            if (!findVariant(product, ram, selectedStorage)) {
+                              const first = product.storageOptions.find(
+                                (s) => findVariant(product, ram, s) !== undefined
+                              );
+                              if (first) setSelectedStorage(first);
+                            }
+                          }}
+                          className={`px-4 py-2 rounded-lg text-sm font-medium border transition-colors cursor-pointer ${
+                            selectedRam === ram
+                              ? "border-foreground bg-foreground text-background"
+                              : hasColor
+                                ? "border-border text-muted-foreground hover:border-foreground/30"
+                                : "border-border/50 text-muted-foreground/30 hover:border-foreground/20"
+                          }`}
+                        >
+                          {ram}
+                        </button>
+                      );
+                    })}
                   </div>
                 </div>
 
@@ -255,6 +267,7 @@ function CheckoutForm({
                   <div className="flex flex-wrap gap-2">
                     {product.storageOptions.map((storage) => {
                       const available = findVariant(product, selectedRam, storage) !== undefined;
+                      const hasColor = available && storageHasColor(storage);
                       return (
                         <button
                           key={storage}
@@ -264,9 +277,11 @@ function CheckoutForm({
                           className={`px-4 py-2 rounded-lg text-sm font-medium border transition-colors ${
                             effectiveStorage === storage
                               ? "border-foreground bg-foreground text-background cursor-pointer"
-                              : available
+                              : available && hasColor
                                 ? "border-border text-muted-foreground hover:border-foreground/30 cursor-pointer"
-                                : "border-border/50 text-muted-foreground/30 cursor-not-allowed"
+                                : available
+                                  ? "border-border/50 text-muted-foreground/30 hover:border-foreground/20 cursor-pointer"
+                                  : "border-border/50 text-muted-foreground/30 cursor-not-allowed"
                           }`}
                         >
                           {storage}
@@ -282,22 +297,41 @@ function CheckoutForm({
                     Colour &mdash; <span className="text-foreground/60">{activeColor.name}</span>
                   </Label>
                   <div className="flex items-center gap-2.5">
-                    {availableColors.map((c) => (
-                      <button
-                        key={c.key}
-                        type="button"
-                        onClick={() => setSelectedColorKey(c.key)}
-                        className="w-8 h-8 rounded-full cursor-pointer transition-transform hover:scale-110"
-                        style={{
-                          backgroundColor: c.hex,
-                          boxShadow:
-                            activeColorKey === c.key
-                              ? `0 0 0 2px #fff, 0 0 0 4px ${c.hex === "#1a1a1a" ? "#0a0a0a" : c.hex}`
-                              : "inset 0 0 0 1px rgba(0,0,0,0.15)",
-                        }}
-                        aria-label={c.name}
-                      />
-                    ))}
+                    {product.colors.map((c) => {
+                      const isAvailable = effectiveVariant.colors.includes(c.key);
+                      return (
+                        <button
+                          key={c.key}
+                          type="button"
+                          onClick={() => {
+                            if (isAvailable) {
+                              setSelectedColorKey(c.key);
+                            } else {
+                              // Switch to cheapest variant that supports this color
+                              const compat = product.variants
+                                .filter((v) => v.colors.includes(c.key))
+                                .sort((a, b) => a.price - b.price)[0];
+                              if (compat) {
+                                setSelectedRam(compat.ram);
+                                setSelectedStorage(compat.storage);
+                                setSelectedColorKey(c.key);
+                              }
+                            }
+                          }}
+                          className={`w-8 h-8 rounded-full cursor-pointer transition-transform ${
+                            isAvailable ? "hover:scale-110" : "opacity-30 hover:opacity-50"
+                          }`}
+                          style={{
+                            backgroundColor: c.hex,
+                            boxShadow:
+                              activeColorKey === c.key
+                                ? `0 0 0 2px #fff, 0 0 0 4px ${c.hex === "#1a1a1a" ? "#0a0a0a" : c.hex}`
+                                : "inset 0 0 0 1px rgba(0,0,0,0.15)",
+                          }}
+                          aria-label={c.name}
+                        />
+                      );
+                    })}
                   </div>
                 </div>
 
