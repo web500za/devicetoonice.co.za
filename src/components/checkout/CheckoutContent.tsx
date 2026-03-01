@@ -63,10 +63,10 @@ export default function CheckoutContent({ stock }: { stock: StockData }) {
 
   if (!product) {
     return (
-      <div className="min-h-screen flex items-center justify-center px-6">
+      <div className="light-theme min-h-screen flex items-center justify-center px-6 bg-background">
         <div className="text-center">
-          <p className="text-lg text-white">Product not found</p>
-          <Link href="/" className="text-white/40 hover:text-white text-sm mt-4 inline-block">
+          <p className="text-lg text-foreground">Product not found</p>
+          <Link href="/" className="text-muted-foreground hover:text-foreground text-sm mt-4 inline-block">
             &larr; Back
           </Link>
         </div>
@@ -76,19 +76,19 @@ export default function CheckoutContent({ stock }: { stock: StockData }) {
 
   if (isSoldOut) {
     return (
-      <div className="min-h-screen bg-black">
-        <header className="border-b border-white/[0.08]">
+      <div className="light-theme min-h-screen bg-background">
+        <header className="border-b border-border">
           <div className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
-            <Link href="/" className="text-white/40 hover:text-white transition-colors text-sm">
+            <Link href="/" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
               &larr; Back
             </Link>
-            <span className="text-sm font-semibold tracking-tight text-white">Checkout</span>
+            <span className="text-sm font-semibold tracking-tight text-foreground">Checkout</span>
             <div className="w-10" />
           </div>
         </header>
         <div className="flex flex-col items-center justify-center px-6 py-24">
-          <h2 className="text-2xl font-bold tracking-tight text-white mb-2">Sold Out</h2>
-          <p className="text-white/40 text-sm mb-8 text-center max-w-md">
+          <h2 className="text-2xl font-bold tracking-tight text-foreground mb-2">Sold Out</h2>
+          <p className="text-muted-foreground text-sm mb-8 text-center max-w-md">
             This month&apos;s allocation has sold out. Join the waitlist and we&apos;ll email you when new stock is available.
           </p>
           <WaitlistForm />
@@ -188,19 +188,19 @@ function CheckoutForm({
 
   function FieldError({ field }: { field: string }) {
     return errors[field] ? (
-      <p className="text-red-400 text-xs mt-1">{errors[field]}</p>
+      <p className="text-destructive text-xs mt-1">{errors[field]}</p>
     ) : null;
   }
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="light-theme min-h-screen bg-background">
       {/* Header */}
-      <header className="border-b border-white/[0.08]">
+      <header className="border-b border-border">
         <div className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
-          <Link href="/" className="text-white/40 hover:text-white transition-colors text-sm">
+          <Link href="/" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
             &larr; Back
           </Link>
-          <span className="text-sm font-semibold tracking-tight text-white">Checkout</span>
+          <span className="text-sm font-semibold tracking-tight text-foreground">Checkout</span>
           <div className="w-10" />
         </div>
       </header>
@@ -212,13 +212,13 @@ function CheckoutForm({
             <div className="lg:col-span-3 space-y-10">
               {/* Configure */}
               <section>
-                <h2 className="text-lg font-semibold tracking-tight text-white mb-6">
+                <h2 className="text-lg font-semibold tracking-tight text-foreground mb-6">
                   Configure
                 </h2>
 
                 {/* RAM */}
                 <div className="mb-5">
-                  <Label className="text-white/40 text-xs uppercase tracking-widest mb-2.5 block">
+                  <Label className="text-muted-foreground text-xs uppercase tracking-widest mb-2.5 block">
                     Memory
                   </Label>
                   <div className="flex flex-wrap gap-2">
@@ -237,8 +237,8 @@ function CheckoutForm({
                         }}
                         className={`px-4 py-2 rounded-lg text-sm font-medium border transition-colors cursor-pointer ${
                           selectedRam === ram
-                            ? "border-white bg-white text-black"
-                            : "border-white/[0.12] text-white/50 hover:border-white/30"
+                            ? "border-foreground bg-foreground text-background"
+                            : "border-border text-muted-foreground hover:border-foreground/30"
                         }`}
                       >
                         {ram}
@@ -249,7 +249,7 @@ function CheckoutForm({
 
                 {/* Storage */}
                 <div className="mb-5">
-                  <Label className="text-white/40 text-xs uppercase tracking-widest mb-2.5 block">
+                  <Label className="text-muted-foreground text-xs uppercase tracking-widest mb-2.5 block">
                     Storage
                   </Label>
                   <div className="flex flex-wrap gap-2">
@@ -263,10 +263,10 @@ function CheckoutForm({
                           disabled={!available}
                           className={`px-4 py-2 rounded-lg text-sm font-medium border transition-colors ${
                             effectiveStorage === storage
-                              ? "border-white bg-white text-black cursor-pointer"
+                              ? "border-foreground bg-foreground text-background cursor-pointer"
                               : available
-                                ? "border-white/[0.12] text-white/50 hover:border-white/30 cursor-pointer"
-                                : "border-white/[0.06] text-white/15 cursor-not-allowed"
+                                ? "border-border text-muted-foreground hover:border-foreground/30 cursor-pointer"
+                                : "border-border/50 text-muted-foreground/30 cursor-not-allowed"
                           }`}
                         >
                           {storage}
@@ -278,8 +278,8 @@ function CheckoutForm({
 
                 {/* Color */}
                 <div className="mb-6">
-                  <Label className="text-white/40 text-xs uppercase tracking-widest mb-2.5 block">
-                    Colour &mdash; <span className="text-white/60">{activeColor.name}</span>
+                  <Label className="text-muted-foreground text-xs uppercase tracking-widest mb-2.5 block">
+                    Colour &mdash; <span className="text-foreground/60">{activeColor.name}</span>
                   </Label>
                   <div className="flex items-center gap-2.5">
                     {availableColors.map((c) => (
@@ -292,8 +292,8 @@ function CheckoutForm({
                           backgroundColor: c.hex,
                           boxShadow:
                             activeColorKey === c.key
-                              ? `0 0 0 2px #000, 0 0 0 4px ${c.hex === "#1a1a1a" ? "#ffffff" : c.hex}`
-                              : "inset 0 0 0 1px rgba(255,255,255,0.15)",
+                              ? `0 0 0 2px #fff, 0 0 0 4px ${c.hex === "#1a1a1a" ? "#0a0a0a" : c.hex}`
+                              : "inset 0 0 0 1px rgba(0,0,0,0.15)",
                         }}
                         aria-label={c.name}
                       />
@@ -303,64 +303,64 @@ function CheckoutForm({
 
               </section>
 
-              <div className="h-px bg-white/[0.08]" />
+              <div className="h-px bg-border" />
 
               {/* Delivery */}
               <section>
-                <h2 className="text-lg font-semibold tracking-tight text-white mb-6">
+                <h2 className="text-lg font-semibold tracking-tight text-foreground mb-6">
                   Delivery
                 </h2>
 
                 <div className="grid sm:grid-cols-2 gap-4 mb-4">
                   <div>
-                    <Label className="text-xs text-white/40 mb-1.5 block">First name</Label>
+                    <Label className="text-xs text-muted-foreground mb-1.5 block">First name</Label>
                     <Input
                       placeholder="John"
                       value={form.firstName}
                       onChange={(e) => update("firstName", e.target.value)}
-                      className={`bg-white/[0.05] border-white/[0.12] text-white placeholder:text-white/25 focus-visible:border-white/30 focus-visible:ring-white/10 ${errors.firstName ? "border-red-400/50" : ""}`}
+                      className={errors.firstName ? "border-destructive" : ""}
                     />
                     <FieldError field="firstName" />
                   </div>
                   <div>
-                    <Label className="text-xs text-white/40 mb-1.5 block">Last name</Label>
+                    <Label className="text-xs text-muted-foreground mb-1.5 block">Last name</Label>
                     <Input
                       placeholder="Doe"
                       value={form.lastName}
                       onChange={(e) => update("lastName", e.target.value)}
-                      className={`bg-white/[0.05] border-white/[0.12] text-white placeholder:text-white/25 focus-visible:border-white/30 focus-visible:ring-white/10 ${errors.lastName ? "border-red-400/50" : ""}`}
+                      className={errors.lastName ? "border-destructive" : ""}
                     />
                     <FieldError field="lastName" />
                   </div>
                 </div>
 
                 <div className="mb-4">
-                  <Label className="text-xs text-white/40 mb-1.5 block">Email</Label>
+                  <Label className="text-xs text-muted-foreground mb-1.5 block">Email</Label>
                   <Input
                     type="email"
                     placeholder="john@example.com"
                     value={form.email}
                     onChange={(e) => update("email", e.target.value)}
-                    className={`bg-white/[0.05] border-white/[0.12] text-white placeholder:text-white/25 focus-visible:border-white/30 focus-visible:ring-white/10 ${errors.email ? "border-red-400/50" : ""}`}
+                    className={errors.email ? "border-destructive" : ""}
                   />
                   <FieldError field="email" />
                 </div>
 
                 <div className="mb-4">
-                  <Label className="text-xs text-white/40 mb-1.5 block">Phone</Label>
+                  <Label className="text-xs text-muted-foreground mb-1.5 block">Phone</Label>
                   <Input
                     type="tel"
                     placeholder="081 234 5678"
                     value={form.phone}
                     onChange={(e) => update("phone", e.target.value)}
-                    className={`bg-white/[0.05] border-white/[0.12] text-white placeholder:text-white/25 focus-visible:border-white/30 focus-visible:ring-white/10 ${errors.phone ? "border-red-400/50" : ""}`}
+                    className={errors.phone ? "border-destructive" : ""}
                   />
-                  <p className="text-white/25 text-xs mt-1">South African mobile number</p>
+                  <p className="text-muted-foreground text-xs mt-1">South African mobile number</p>
                   <FieldError field="phone" />
                 </div>
 
                 <div className="mb-4">
-                  <Label className="text-xs text-white/40 mb-1.5 block">Street address</Label>
+                  <Label className="text-xs text-muted-foreground mb-1.5 block">Street address</Label>
                   <AddressAutocomplete
                     placeholder="Start typing your address..."
                     value={form.streetAddress}
@@ -382,34 +382,34 @@ function CheckoutForm({
                         return next;
                       });
                     }}
-                    className={`bg-white/[0.05] border-white/[0.12] text-white placeholder:text-white/25 focus-visible:border-white/30 focus-visible:ring-white/10 ${errors.streetAddress ? "border-red-400/50" : ""}`}
+                    className={errors.streetAddress ? "border-destructive" : ""}
                   />
                   <FieldError field="streetAddress" />
                 </div>
 
                 <div className="grid sm:grid-cols-2 gap-4 mb-4">
                   <div>
-                    <Label className="text-xs text-white/40 mb-1.5 block">City</Label>
+                    <Label className="text-xs text-muted-foreground mb-1.5 block">City</Label>
                     <Input
                       placeholder="Cape Town"
                       value={form.city}
                       onChange={(e) => update("city", e.target.value)}
-                      className={`bg-white/[0.05] border-white/[0.12] text-white placeholder:text-white/25 focus-visible:border-white/30 focus-visible:ring-white/10 ${errors.city ? "border-red-400/50" : ""}`}
+                      className={errors.city ? "border-destructive" : ""}
                     />
                     <FieldError field="city" />
                   </div>
                   <div>
-                    <Label className="text-xs text-white/40 mb-1.5 block">Province</Label>
+                    <Label className="text-xs text-muted-foreground mb-1.5 block">Province</Label>
                     <Select
                       value={form.province || undefined}
                       onValueChange={(v) => update("province", v)}
                     >
-                      <SelectTrigger className={`bg-white/[0.05] border-white/[0.12] text-white w-full [&_svg]:text-white/30 ${errors.province ? "border-red-400/50" : ""}`}>
+                      <SelectTrigger className={errors.province ? "border-destructive" : ""}>
                         <SelectValue placeholder="Select" />
                       </SelectTrigger>
-                      <SelectContent className="bg-[#1a1a1a] border-white/[0.12]">
+                      <SelectContent>
                         {SA_PROVINCES.map((p) => (
-                          <SelectItem key={p} value={p} className="text-white/70 focus:bg-white/[0.08] focus:text-white">{p}</SelectItem>
+                          <SelectItem key={p} value={p}>{p}</SelectItem>
                         ))}
                       </SelectContent>
                     </Select>
@@ -418,20 +418,20 @@ function CheckoutForm({
                 </div>
 
                 <div className="mb-6">
-                  <Label className="text-xs text-white/40 mb-1.5 block">Postal code</Label>
+                  <Label className="text-xs text-muted-foreground mb-1.5 block">Postal code</Label>
                   <Input
                     placeholder="8001"
                     maxLength={4}
                     value={form.postalCode}
                     onChange={(e) => update("postalCode", e.target.value)}
-                    className={`max-w-[120px] bg-white/[0.05] border-white/[0.12] text-white placeholder:text-white/25 focus-visible:border-white/30 focus-visible:ring-white/10 ${errors.postalCode ? "border-red-400/50" : ""}`}
+                    className={`max-w-[120px] ${errors.postalCode ? "border-destructive" : ""}`}
                   />
                   <FieldError field="postalCode" />
                 </div>
 
                 {submitError && (
-                  <div className="mb-4 p-3 rounded-lg bg-red-500/10 border border-red-400/20">
-                    <p className="text-red-400 text-sm">{submitError}</p>
+                  <div className="mb-4 p-3 rounded-lg bg-destructive/10 border border-destructive/20">
+                    <p className="text-destructive text-sm">{submitError}</p>
                   </div>
                 )}
 
@@ -445,14 +445,14 @@ function CheckoutForm({
                   >
                     {submitting ? "Redirecting..." : `Pay ${formatPrice(effectiveVariant.price)}`}
                   </Button>
-                  <p className="text-white/30 text-xs text-center mt-3">
+                  <p className="text-muted-foreground text-xs text-center mt-3">
                     Secure payment via Yoco
                   </p>
-                  <p className="text-white/20 text-xs text-center mt-2">
+                  <p className="text-muted-foreground/60 text-xs text-center mt-2">
                     By paying, you agree to our{" "}
-                    <Link href="/terms" className="text-white/30 hover:text-white/50 underline">Terms</Link>
+                    <Link href="/terms" className="text-muted-foreground hover:text-foreground underline">Terms</Link>
                     {" "}&amp;{" "}
-                    <Link href="/privacy" className="text-white/30 hover:text-white/50 underline">Privacy Policy</Link>
+                    <Link href="/privacy" className="text-muted-foreground hover:text-foreground underline">Privacy Policy</Link>
                   </p>
                 </div>
               </section>
@@ -461,7 +461,7 @@ function CheckoutForm({
             {/* ── Right: Summary ── */}
             <div className="lg:col-span-2">
               <div className="lg:sticky lg:top-6">
-                <div className="rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-sm p-6">
+                <div className="rounded-2xl border border-border bg-card p-6">
                   <div className="flex justify-center mb-5">
                     <img
                       src={activeColor.image}
@@ -470,29 +470,29 @@ function CheckoutForm({
                     />
                   </div>
 
-                  <p className="font-semibold text-center text-white mb-1">{product.name}</p>
-                  <p className="text-white/40 text-sm text-center mb-5">
+                  <p className="font-semibold text-center text-foreground mb-1">{product.name}</p>
+                  <p className="text-muted-foreground text-sm text-center mb-5">
                     {selectedRam} &middot; {effectiveStorage} &middot; {activeColor.name}
                   </p>
 
-                  <div className="h-px bg-white/[0.08] mb-5" />
+                  <div className="h-px bg-border mb-5" />
 
                   <div className="space-y-2.5 text-sm">
                     <div className="flex justify-between">
-                      <span className="text-white/40">Subtotal</span>
-                      <span className="font-medium text-white">{formatPrice(effectiveVariant.price)}</span>
+                      <span className="text-muted-foreground">Subtotal</span>
+                      <span className="font-medium text-foreground">{formatPrice(effectiveVariant.price)}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-white/40">Delivery</span>
-                      <span className="font-medium text-white">Free</span>
+                      <span className="text-muted-foreground">Delivery</span>
+                      <span className="font-medium text-foreground">Free</span>
                     </div>
                   </div>
 
-                  <div className="h-px bg-white/[0.08] my-5" />
+                  <div className="h-px bg-border my-5" />
 
                   <div className="flex justify-between items-baseline">
-                    <span className="font-semibold text-white">Total</span>
-                    <span className="text-xl font-bold text-white">{formatPrice(effectiveVariant.price)}</span>
+                    <span className="font-semibold text-foreground">Total</span>
+                    <span className="text-xl font-bold text-foreground">{formatPrice(effectiveVariant.price)}</span>
                   </div>
 
                   {/* Desktop pay button */}
@@ -505,20 +505,20 @@ function CheckoutForm({
                     >
                       {submitting ? "Redirecting..." : `Pay ${formatPrice(effectiveVariant.price)}`}
                     </Button>
-                    <p className="text-white/30 text-xs text-center mt-3">
+                    <p className="text-muted-foreground text-xs text-center mt-3">
                       Secure payment via Yoco
                     </p>
-                    <p className="text-white/20 text-xs text-center mt-2">
+                    <p className="text-muted-foreground/60 text-xs text-center mt-2">
                       By paying, you agree to our{" "}
-                      <Link href="/terms" className="text-white/30 hover:text-white/50 underline">Terms</Link>
+                      <Link href="/terms" className="text-muted-foreground hover:text-foreground underline">Terms</Link>
                       {" "}&amp;{" "}
-                      <Link href="/privacy" className="text-white/30 hover:text-white/50 underline">Privacy Policy</Link>
+                      <Link href="/privacy" className="text-muted-foreground hover:text-foreground underline">Privacy Policy</Link>
                     </p>
                   </div>
 
-                  <div className="h-px bg-white/[0.08] my-5" />
+                  <div className="h-px bg-border my-5" />
 
-                  <div className="text-white/30 text-xs space-y-1.5">
+                  <div className="text-muted-foreground text-xs space-y-1.5">
                     <p>Free delivery nationwide</p>
                     <p>No customs fees</p>
                     <p>7&ndash;10 day delivery</p>

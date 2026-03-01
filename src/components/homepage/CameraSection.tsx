@@ -83,11 +83,11 @@ export function CameraSection() {
           </p>
         </ScrollReveal>
 
-        {/* Camera spec cards */}
-        <div className="grid md:grid-cols-3 gap-4 sm:gap-6 mt-14">
+        {/* Camera spec cards — horizontal scroll on mobile, 3-col grid on desktop */}
+        <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 md:grid md:grid-cols-3 md:overflow-visible md:snap-none sm:gap-6 mt-14 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           {cameras.map((camera) => (
             <ScrollReveal key={camera.title} delay={camera.delay}>
-              <div className="bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6 sm:p-8 relative overflow-hidden backdrop-blur-sm before:absolute before:top-0 before:left-0 before:right-0 before:h-[2px] before:bg-[var(--cta)]">
+              <div className="min-w-[280px] snap-center md:min-w-0 bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6 sm:p-8 relative overflow-hidden backdrop-blur-sm before:absolute before:top-0 before:left-0 before:right-0 before:h-[2px] before:bg-[var(--cta)]">
                 <p className="text-xs uppercase tracking-[0.2em] text-[var(--cta)] font-medium">
                   {camera.title}
                 </p>

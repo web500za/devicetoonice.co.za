@@ -34,10 +34,10 @@ export function DesignSection({ colors }: DesignSectionProps) {
 
       <div className="relative py-32 sm:py-40 px-6 max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 gap-16 items-center">
-          {/* Right column — image (appears first on mobile) */}
-          <div className="md:order-2">
+          {/* Right column — image (after text on mobile, right on desktop) */}
+          <div className="order-last md:order-2">
             <ScrollReveal y={0} delay={0.2}>
-              <div className="relative flex items-center justify-center min-h-[400px] sm:min-h-[500px]">
+              <div className="relative flex items-center justify-center min-h-[300px] sm:min-h-[500px]">
                 <AnimatePresence mode="wait">
                   <motion.img
                     key={activeColor.key}
@@ -54,8 +54,8 @@ export function DesignSection({ colors }: DesignSectionProps) {
             </ScrollReveal>
           </div>
 
-          {/* Left column — text content */}
-          <div className="md:order-1">
+          {/* Left column — text content (first on mobile, left on desktop) */}
+          <div className="order-first md:order-1">
             <ScrollReveal y={30}>
               {/* Headline */}
               <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tighter text-white leading-[0.95]">

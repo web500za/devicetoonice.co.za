@@ -25,7 +25,7 @@ export function BatterySection() {
           src="/images/oneplus-15/cdn/backgrounds/section-bg-2.jpg"
           alt=""
           fill
-          className="object-cover object-center opacity-35"
+          className="object-cover object-[55%_45%] sm:object-center opacity-35"
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-transparent to-[#0a0a0a]" />

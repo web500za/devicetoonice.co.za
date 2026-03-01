@@ -26,7 +26,7 @@ export function StockIndicator({
   }
 
   return (
-    <span className={`text-xs text-white/50 ${className}`}>
+    <span className={`text-xs font-medium text-amber-400 ${className}`}>
       {remaining} of {total} available
     </span>
   );

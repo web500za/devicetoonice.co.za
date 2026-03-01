@@ -23,7 +23,7 @@ export function PerformanceSection() {
           src="/images/oneplus-15/cdn/backgrounds/section-bg-0.jpg"
           alt=""
           fill
-          className="object-cover object-center opacity-40"
+          className="object-cover object-[50%_60%] sm:object-center opacity-40"
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black via-black/60 to-black" />
@@ -64,7 +64,7 @@ export function PerformanceSection() {
         </div>
 
         {/* Stats row */}
-        <div className="mt-16 flex justify-center gap-12 sm:gap-16">
+        <div className="mt-16 flex justify-center gap-6 sm:gap-12 md:gap-16">
           {stats.map((stat, i) => (
             <ScrollReveal key={stat.label} delay={0.4 + i * 0.1}>
               <div>
@@ -72,7 +72,7 @@ export function PerformanceSection() {
                   end={stat.end}
                   suffix={stat.suffix}
                   decimals={stat.decimals}
-                  className="text-3xl sm:text-4xl font-bold text-white"
+                  className="text-2xl sm:text-3xl md:text-4xl font-bold text-white"
                 />
                 <p className="text-xs sm:text-sm text-white/50 mt-2">
                   {stat.label}
@@ -84,11 +84,11 @@ export function PerformanceSection() {
 
         {/* Tag pills */}
         <ScrollReveal delay={0.7}>
-          <div className="mt-12 flex flex-wrap justify-center gap-3">
+          <div className="mt-12 flex justify-center gap-3 overflow-x-auto flex-nowrap [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {pills.map((pill) => (
               <span
                 key={pill}
-                className="border border-white/10 rounded-full px-4 py-2 text-xs sm:text-sm text-white/60 backdrop-blur-sm"
+                className="border border-white/10 rounded-full px-4 py-2 text-xs sm:text-sm text-white/60 backdrop-blur-sm whitespace-nowrap shrink-0"
               >
                 {pill}
               </span>

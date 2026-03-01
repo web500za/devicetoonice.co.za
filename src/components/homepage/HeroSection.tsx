@@ -73,7 +73,7 @@ export function HeroSection({ stock }: { stock: StockData }) {
           alt="OnePlus 15 — Infinite Black"
           fill
           priority
-          className="object-cover object-[50%_45%]"
+          className="object-cover object-[50%_65%] sm:object-[50%_45%]"
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black/85" />
