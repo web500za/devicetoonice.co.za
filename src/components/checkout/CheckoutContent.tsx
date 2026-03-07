@@ -556,7 +556,7 @@ function CheckoutForm({
                     <p>Free delivery nationwide</p>
                     <p>No customs fees</p>
                     <p>7&ndash;10 day delivery</p>
-                    <p>Warranty included</p>
+                    <p>30-day DOA guarantee</p>
                     <p>Charger in the box</p>
                   </div>
                 </div>
