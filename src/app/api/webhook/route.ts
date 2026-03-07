@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { createHmac, timingSafeEqual } from "crypto";
 import { decrementStock } from "@/lib/stock";
+import { getProduct } from "@/lib/products";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -192,6 +193,12 @@ export async function POST(request: Request) {
     }
 
     const { metadata, id: paymentId, amount } = body.payload;
+
+    // Ignore payments that don't belong to devicetoonice (e.g. janesedibles.co.za)
+    if (!metadata?.productSlug || !getProduct(metadata.productSlug)) {
+      console.log("Webhook: unknown or missing productSlug — ignoring (likely from another site)");
+      return NextResponse.json({ received: true });
+    }
 
     if (!metadata?.email) {
       console.error("Webhook: no email in metadata");
