@@ -19,17 +19,17 @@ export default function TermsPage() {
         <h1 className="mt-8 text-3xl font-bold tracking-tight text-white">
           Terms &amp; Conditions
         </h1>
-        <p className="mt-2 text-sm text-white/30">Last updated: February 2026</p>
+        <p className="mt-2 text-sm text-white/30">Last updated: March 2026</p>
 
         {/* 1. Overview */}
         <h2 className="text-lg font-semibold text-white mt-10 mb-3">
           1. Overview
         </h2>
         <p className="text-sm text-white/60 leading-relaxed">
-          Device Too Nice is an online retailer selling premium smartphones in
-          South Africa. By placing an order on our website, you agree to be bound
-          by these terms and conditions. Please read them carefully before making
-          a purchase.
+          Device Too Nice is an online retailer selling imported premium
+          smartphones in South Africa. By placing an order on our website, you
+          agree to be bound by these terms and conditions. Please read them
+          carefully before making a purchase.
         </p>
 
         {/* 2. Products & Pricing */}
@@ -97,14 +97,32 @@ export default function TermsPage() {
           for full details.
         </p>
 
-        {/* 7. Warranty */}
+        {/* 7. Imported Devices & Warranty */}
         <h2 className="text-lg font-semibold text-white mt-10 mb-3">
-          7. Warranty
+          7. Imported Devices &amp; Warranty
         </h2>
         <p className="text-sm text-white/60 leading-relaxed">
-          All devices are covered by the manufacturer&rsquo;s warranty (1 year).
-          Device Too Nice will assist with facilitating warranty claims where
-          possible but is not the warranty provider.
+          All devices sold by Device Too Nice are imported directly from
+          international suppliers.{" "}
+          <span className="text-white/80 font-medium">
+            These devices are not covered by any local South African
+            manufacturer warranty.
+          </span>{" "}
+          By placing an order, you acknowledge and accept that you are
+          purchasing an imported device without local warranty support.
+        </p>
+        <p className="text-sm text-white/60 leading-relaxed mt-3">
+          If your device is dead on arrival or develops a manufacturing fault
+          within 30 days of delivery, we will arrange a replacement or refund
+          as outlined in our{" "}
+          <Link
+            href="/returns"
+            className="text-[#e31937] hover:underline"
+          >
+            Returns &amp; Refunds policy
+          </Link>
+          . Beyond this 30-day window, Device Too Nice bears no further
+          responsibility for defects, repairs, or replacements.
         </p>
 
         {/* 8. Limitation of Liability */}
@@ -113,10 +131,11 @@ export default function TermsPage() {
         </h2>
         <p className="text-sm text-white/60 leading-relaxed">
           Device Too Nice acts as an intermediary between you and the
-          international supplier. We are not liable for manufacturer defects
-          beyond facilitating the warranty process. Our total liability in
-          connection with any order is limited to the purchase price of the
-          product.
+          international supplier. We are not a manufacturer, authorised
+          distributor, or warranty provider. Our total liability in connection
+          with any order is limited to the purchase price of the product. We
+          are not liable for manufacturer defects, software issues, or
+          compatibility concerns beyond the 30-day defective items window.
         </p>
 
         {/* 9. Changes to Terms */}

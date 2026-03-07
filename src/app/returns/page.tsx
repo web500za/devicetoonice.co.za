@@ -19,7 +19,7 @@ export default function ReturnsPage() {
         <h1 className="mt-8 text-3xl font-bold tracking-tight text-white">
           Returns &amp; Refunds
         </h1>
-        <p className="mt-2 text-sm text-white/30">Last updated: February 2026</p>
+        <p className="mt-2 text-sm text-white/30">Last updated: March 2026</p>
 
         {/* 1. Overview */}
         <h2 className="text-lg font-semibold text-white mt-10 mb-3">
@@ -83,24 +83,23 @@ export default function ReturnsPage() {
           arrange a replacement or full refund at no additional cost to you.
         </p>
 
-        {/* 5. Warranty */}
+        {/* 5. Imported Devices — No Local Warranty */}
         <h2 className="text-lg font-semibold text-white mt-10 mb-3">
-          5. Warranty
+          5. Imported Devices &mdash; No Local Warranty
         </h2>
         <p className="text-sm text-white/60 leading-relaxed">
-          All devices are covered by the OnePlus manufacturer&rsquo;s warranty
-          ({" "}
+          All devices are imported directly from international suppliers and{" "}
           <span className="text-white/80 font-medium">
-            1 year from date of purchase
+            are not covered by any local South African manufacturer warranty
           </span>
-          ). Warranty claims are handled through OnePlus directly. Device Too
-          Nice will assist with facilitating the warranty process where possible,
-          but we are not the warranty provider.
+          . By purchasing from Device Too Nice, you accept that no warranty
+          applies beyond the 30-day defective items (DOA) window described
+          above.
         </p>
         <p className="text-sm text-white/60 leading-relaxed mt-3">
-          The warranty covers manufacturing defects only &mdash; physical
-          damage, water damage (beyond rated IP protection), and software
-          modifications are not covered.
+          After the 30-day DOA window, Device Too Nice bears no responsibility
+          for defects, repairs, or replacements. Any repairs after this period
+          are the buyer&rsquo;s responsibility.
         </p>
 
         {/* 6. Cancellations */}
